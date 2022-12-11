@@ -8,7 +8,7 @@
 - The code must be well organized, variable names should be suggestive of their purpose and use a naming standard (e.g. camel case), the code should be indented for readability
 - The code must be documented with comments for each class, function etc.
 - Non working applications receive no points. However, functionality of the front-end or back-end can be demonstrated separately
-\
+
 #### Bug Tracking App
 - As a student i can connect to the application with an account based on an email address.
 - As a student member of a project team (PM) i can register a software project in the bug tracking application, specifying a description, the repository where the project is hosted and the project team.
@@ -20,4 +20,5 @@
 - The application has  a permission system. A PM can add and modify a project, can change the status of a bug. A TST can add a bug.
 ---
 ### Project Plan
-WIP
+#### Tasks
+- Task 1: Add DB schema for project
