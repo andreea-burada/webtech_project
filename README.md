@@ -21,4 +21,5 @@
 ---
 ### Project Plan
 #### Tasks
-- Task 1: Add DB schema for project
+Link to Kanban board: https://powerpuff-webtech.atlassian.net/jira/core/projects/BTP/board \
+Please request access if needed.
