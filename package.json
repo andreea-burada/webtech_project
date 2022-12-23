@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/andreea-burada/webtech_project/issues"
   },
-  "homepage": "https://github.com/andreea-burada/webtech_project#readme"
+  "homepage": "https://github.com/andreea-burada/webtech_project#readme",
+  "dependencies": {
+    "mysql": "^2.18.1",
+    "mysql2": "^2.3.3"
+  }
 }
