@@ -2,7 +2,7 @@
   "name": "webtech_project",
   "version": "1.0.0",
   "description": "",
-  "main": "./server/server.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,21 +17,7 @@
   },
   "homepage": "https://github.com/andreea-burada/webtech_project#readme",
   "dependencies": {
-    "body-parser": "^1.20.1",
-    "crypto": "^1.0.1",
-    "express": "^4.18.2",
-    "fs": "^0.0.1-security",
-    "http": "^0.0.1-security",
     "mysql": "^2.18.1",
-    "mysql2": "^2.3.3",
-    "reflect-metadata": "^0.1.13",
-    "sequelize": "^6.28.0",
-    "ts-node": "^10.9.1",
-    "typescript": "^4.9.4",
-    "uuid": "^9.0.0",
-    "uuidv4": "^6.2.13"
-  },
-  "devDependencies": {
-    "@types/node": "^18.11.17"
+    "mysql2": "^2.3.3"
   }
 }

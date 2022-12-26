@@ -16,12 +16,12 @@ database.getConnection(function(error, connection) {
         console.log(error);
 
     connection.query(`
-        DROP TABLE IF EXISTS bugs;
-        DROP TABLE IF EXISTS software_projects;
-        DROP TABLE IF EXISTS team_members; 
-        DROP TABLE IF EXISTS teams;
         DROP TABLE IF EXISTS students;
-        CREATE TABLE students (gid varchar(36) NOT NULL, first_name varchar(30) NOT NULL, last_name varchar(30), email varchar(50) NOT NULL UNIQUE, password varchar(128) NOT NULL, salt varchar(64) NOT NULL, username varchar(25) NOT NULL UNIQUE, PRIMARY KEY (gid));
+        DROP TABLE IF EXISTS team_members;
+        DROP TABLE IF EXISTS teams;
+        DROP TABLE IF EXISTS software_projects;
+        DROP TABLE IF EXISTS bugs; 
+        CREATE TABLE students (gid varchar(32) NOT NULL, first_name varchar(30) NOT NULL, last_name varchar(30), email varchar(50) NOT NULL UNIQUE, password varchar(30) NOT NULL, username varchar(25) NOT NULL UNIQUE, PRIMARY KEY (gid));
         CREATE TABLE team_members (id int(5) NOT NULL AUTO_INCREMENT, tester int(1) NOT NULL, member_gid varchar(32) NOT NULL, team_id int(5) NOT NULL, is_admin int(1) NOT NULL, PRIMARY KEY (id));
         CREATE TABLE teams (id int(5) NOT NULL AUTO_INCREMENT, name varchar(35) NOT NULL UNIQUE, slogan varchar(350), initials varchar(4) NOT NULL UNIQUE, PRIMARY KEY (id));
         CREATE TABLE software_projects (id int(5) NOT NULL AUTO_INCREMENT, name varchar(35) NOT NULL UNIQUE, description varchar(350), repo_link varchar(255) NOT NULL UNIQUE, team_membersid int(5) NOT NULL, owner_id int(5) NOT NULL, PRIMARY KEY (id));
