@@ -104,4 +104,4 @@ dist
 .tern-port
 
 #Project files
-test/test.js
+**/package-lock.json/**
