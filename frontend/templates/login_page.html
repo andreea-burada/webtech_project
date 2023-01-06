@@ -8,7 +8,8 @@
     <body>
         <h1>Log in</h1>
         <p>Please enter your information below.</p>
-        <form autocomplete="on" method="post" action="/register">
+        <div style="display: inline;">
+        <form autocomplete="on" method="post" action="/register" style="display: inline-block;">
             <fieldset>
                 <label for="firstname">First Name: <input id="firstname" name="firstname" type="text" placeholder="Enter your first name here..." maxlength="30" required></label>
                 <br><br><!--can be removed when using css-->
@@ -30,6 +31,16 @@
                 <input type="submit" value="Submit">
             </fieldset>
         </form>
+
+        <form autocomplete="on" method="post" action="/login" style="display: inline-block;">
+            <fieldset>
+                <label for="username">Username: <input id="username" name="username" type="text" maxlength="25" required></label>
+                <br><br> <!--can be removed when using css-->
+                <label for="password">Password: <input id="password" name="password" type="password" maxlength="30" required></label>
+                <input type="submit" value="Login">
+            </fieldset>
+        </form>
+        </div>
     </body>
     <footer></footer>
 </html>
