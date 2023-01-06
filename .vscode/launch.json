@@ -12,7 +12,7 @@
                 "${workspaceFolder}/<node_internals>/**",
                 "${workspaceFolder}/node_modules/**"
             ],
-            "program": "${workspaceFolder}\\server\\server.js"
+            "program": "${workspaceFolder}\\backend\\server\\server.js"
         }
     ]
 }
