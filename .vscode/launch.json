@@ -5,14 +5,21 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "start server",
             "type": "node",
             "request": "launch",
+            "name": "backend",
+            "runtimeExecutable": "nodemon",
+            "program": "${workspaceRoot}\\backend\\server\\server.js",
+            "cwd": "${workspaceFolder}\\backend",
+            "restart": true,
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
             "skipFiles": [
                 "${workspaceFolder}/<node_internals>/**",
-                "${workspaceFolder}/node_modules/**"
-            ],
-            "program": "${workspaceFolder}\\backend\\server\\server.js"
+                "<node_internals>/**",
+                "${workspaceFolder}/node_modules/**",
+                "!**/node_modules/**"
+            ]
         }
     ]
 }
