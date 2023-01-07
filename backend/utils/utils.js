@@ -15,9 +15,9 @@ const hashPassword = (password, salt) => {
 }
 
 // Verify password using salt from Student entity
-const verifyPassword = (password, salt, dbPassword) => {
+const verifyPassword = (password, salt, correct_password) => {
     let hash = crypto.pbkdf2Sync(password, salt, 1000, 64, `sha512`).toString(`hex`); 
-    return dbPassword === hash;
+    return correct_password === hash;
 }
 
 module.exports = {

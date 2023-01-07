@@ -39,25 +39,25 @@ const Student = sequelize.define("students", {
     updatedAt: false
 });
 
-const Student_findByEmail = (_email) => {
-    return Student.findOne({
+const Student_findByEmail = async (_email) => {
+    let result = await Student.findOne({
         where: {
             email : _email
         }
     }).then(res => {
-        return res.dataValues;
+        return res;
     }).catch((error) => {
         console.error('Failed to retrieve data : ', error);
     });
 };
 
-const Student_findByUsername = (_username) => {
-    return Student.findOne({
+const Student_findByUsername = async (_username) => {
+    let result = await Student.findOne({
         where: {
             username : _username
         }
     }).then(res => {
-        return res.dataValues;
+        return res;
     }).catch((error) => {
         console.error('Failed to retrieve data : ', error);
     });

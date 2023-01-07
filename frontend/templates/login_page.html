@@ -3,23 +3,26 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="/js/welcome.js" type="text/javascript"></script> 
         <title>Login Page</title>
     </head>
     <body>
+        <h2>Username</h2>
+        <h4 id="username"></h4>
         <h1>Log in</h1>
         <p>Please enter your information below.</p>
         <div style="display: inline;">
         <form autocomplete="on" method="post" action="/register" style="display: inline-block;">
             <fieldset>
-                <label for="firstname">First Name: <input id="firstname" type="text" placeholder="Enter your first name here..." maxlength="30" required></label>
+                <label for="firstname">First Name: <input id="firstname" name="firstname" type="text" placeholder="Enter your first name here..." maxlength="30" required></label>
                 <br><br><!--can be removed when using css-->
-                <label for="lastname">Last Name: <input id="lastname" type="text" placeholder="Enter your last name here..." maxlength="30"></label>
+                <label for="lastname">Last Name: <input id="lastname" name="lastname" type="text" placeholder="Enter your last name here..." maxlength="30"></label>
                 <br><br><!--can be removed when using css-->
-                <label for="username">Username: <input id="username" type="text" placeholder="Enter your username here..." maxlength="25" required></label>
+                <label for="username">Username: <input id="username" name="username" type="text" placeholder="Enter your username here..." maxlength="25" required></label>
                 <br><br> <!--can be removed when using css-->
-                <label for="email">Email: <input id="email" type="email" placeholder="username@domain.com" maxlength="50" required ></label>
+                <label for="email">Email: <input id="email" name="email" type="email" placeholder="username@domain.com" maxlength="50" required ></label>
                 <br><br> <!--can be removed when using css-->
-                <label for="password">Password: <input id="password" type="password"  
+                <label for="password">Password: <input id="password" name="password" type="password"  
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
                     title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" 
                     placeholder="Enter your password here..." maxlength="30" required></label>
@@ -42,5 +45,7 @@
         </form>
         </div>
     </body>
-    <footer></footer>
+    <footer>
+        <button onclick="logout();">Log Out</button>
+    </footer>
 </html>

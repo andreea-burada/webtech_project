@@ -23,3 +23,10 @@
 #### Tasks
 Link to Kanban board: https://powerpuff-webtech.atlassian.net/jira/core/projects/BTP/board \
 Please request access if needed.
+
+## Instructions to run the project
+```
+npm ci
+npm install -g nodemon
+```
+Then launch the server using the VS code configurations.
