@@ -1,3 +1,7 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+
 const express = require('express'); //Import the express dependency
 const app = express();              //Instantiate an express app, the main work horse of this server
 const port = 5500;                  //Save the port number where your server will be listening
@@ -11,3 +15,7 @@ app.get('/', (req, res) => {        //get requests to the root ("/") will route 
 app.listen(port, () => {            //server starts listening for any attempts from a client to connect at port: {port}
     console.log(`Now listening on port ${port}`); 
 });
+
+
+
+ReactDOM.render(<App />, document.getElementById('root'));
