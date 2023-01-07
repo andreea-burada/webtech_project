@@ -38,7 +38,7 @@ const RegisterRoute = async (req, res) => {
     }
     catch (error) {
         console.log(error);
-        res.sendFile(String(path.resolve(`${__dirname}\\..\\..\\frontend\\templates\\login_page.html`)));
+        res.sendFile(String(path.resolve(`${__dirname}\\..\\..\\frontend\\app\\public\\templates\\login_page.html`)));
     }
 }
 

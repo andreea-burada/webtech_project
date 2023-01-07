@@ -10,7 +10,7 @@ const app = express();
 const port = 8080;
 const bodyParser = require('body-parser');
 
-app.use(express.static('../frontend'));
+app.use(express.static('..\\frontend\\app'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
@@ -47,7 +47,7 @@ const {
 } = require("./apis");
 
 app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, `..\\..\\frontend\\templates\\login_page.html`));
+    res.sendFile(path.resolve(__dirname, `..\\..\\frontend\\app\\public\\templates\\login_page.html`));
 });
 
 app.get('/api/user', GetSessionUser);
