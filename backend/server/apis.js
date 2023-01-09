@@ -10,7 +10,7 @@ const GetSessionUser = (req, res) => {
         }
         res.status(200).json(user_json);
    } else {
-        res.status(404).send(null);
+        res.status(404).send({message: "No user logged in"});
    }
 }
 

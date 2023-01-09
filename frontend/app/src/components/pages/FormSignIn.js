@@ -12,7 +12,7 @@ const FormSignup = ({ submitForm }) => {
 
   return (
     <div className='form'>
-      <form onSubmit={handleSubmit} action="http://localhost:8080/login" className='form' noValidate>
+      <form onSubmit={handleSubmit} method="post" action="http://localhost:8080/login" className='form' noValidate>
       <h1>Log in</h1>
 
         <div className='form-inputs'>

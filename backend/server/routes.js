@@ -33,7 +33,7 @@ const RegisterRoute = async (req, res) => {
             let newStudent = new Student(student);
             newStudent.save();
             console.log("Student added.");
-            res.redirect("/");
+            res.redirect("http://localhost:3000");
         }
     }
     catch (error) {
@@ -61,10 +61,10 @@ const LoginRoute = async (req, res) => {
             let isCorrect = verifyPassword(form.password, student.dataValues.salt, student.dataValues.password);
             if (isCorrect == true) {
                 req.session.user = student;
-                return res.redirect("/");
+                return res.redirect("http://localhost:3000");
             } 
             else {
-                return res.redirect("/");
+                return res.redirect("http://localhost:3000");
             }
         }
     }

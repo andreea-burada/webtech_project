@@ -12,7 +12,7 @@ const FormSignup = ({ submitForm }) => {
 
   return (
     <div className='form-content-right'>
-      <form onSubmit={handleSubmit} className='form' noValidate>
+      <form onSubmit={handleSubmit} method="post" action="http://localhost:8080/register" className='form' noValidate>
         <h1>
           Create your account by filling out the information below.
         </h1>

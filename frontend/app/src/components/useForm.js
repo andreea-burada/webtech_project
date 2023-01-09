@@ -25,6 +25,8 @@ const useForm = (callback, validate) => {
 
     setErrors(validate(values));
     setIsSubmitting(true);
+    
+    document.querySelector('form').submit();
   };
 
   useEffect(
