@@ -1,0 +1,34 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "run backend",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "nodemon",
+      "program": "${workspaceRoot}\\backend\\server\\server.js",
+      "cwd": "${workspaceFolder}\\backend",
+      "restart": true,
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "skipFiles": [
+        "${workspaceFolder}/<node_internals>/**",
+        "<node_internals>/**",
+        "${workspaceFolder}/node_modules/**",
+        "!**/node_modules/**"
+      ]
+    },
+    {
+        "name": "run frontend",
+        "type": "node",
+        "request": "launch",
+        "cwd": "${workspaceRoot}\\frontend\\app",
+        "console": "integratedTerminal",
+        "runtimeExecutable": "npm",
+        "runtimeArgs": [ "start" ]
+    }
+  ]
+}
