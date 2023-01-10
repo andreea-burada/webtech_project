@@ -5,14 +5,14 @@ import '../Form.css';
 import { Link } from 'react-router-dom';
 
 const FormSignup = ({ submitForm }) => {
-  const { handleChange, handleSubmit, values, errors } = useForm(
+  const { handleChange, handleSubmit, values, errors, handleLoginSubmit } = useForm(
     submitForm,
     validate
   );
 
   return (
-    <div className='form'>
-      <form onSubmit={handleSubmit} method="post" action="http://localhost:8080/login" className='form' noValidate>
+    <div className='form-content-right'>
+      <form onSubmit={handleLoginSubmit} className='form' noValidate>
       <h1>Log in</h1>
 
         <div className='form-inputs'>

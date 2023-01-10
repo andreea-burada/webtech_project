@@ -1,6 +1,6 @@
 import React from "react";
 import "../App.css";
-import { Button, LoginModalButton } from "./Button";
+import { Button, SignupButton } from "./Button";
 import "./Hero.css";
 
 function Hero() {
@@ -9,13 +9,13 @@ function Hero() {
       <h1>BUG TRACKING PLATFORM</h1>
       <p>Start tracking bugs today!</p>
       <div className="hero-btns">
-        <LoginModalButton
+        <SignupButton
           className="btns"
           buttonStyle="btn--outline"
           buttonSize="btn--large"
         >
           GET STARTED
-        </LoginModalButton>
+        </SignupButton>
       </div>
     </div>
   );

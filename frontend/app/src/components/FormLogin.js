@@ -12,7 +12,6 @@ const Form = () => {
   return (
     <>
       <div className='form-container'>
-        <span className='close-btn'>×</span>
         <div className='form-content-left'>
           
         </div>

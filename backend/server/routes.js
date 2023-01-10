@@ -61,10 +61,10 @@ const LoginRoute = async (req, res) => {
             let isCorrect = verifyPassword(form.password, student.dataValues.salt, student.dataValues.password);
             if (isCorrect == true) {
                 req.session.user = student;
-                return res.redirect("http://localhost:3000");
+                return res.status(200).json({message: "New session established"});
             } 
             else {
-                return res.redirect("http://localhost:3000");
+                return res.status(403).json({message: "Password incorrect"});
             }
         }
     }

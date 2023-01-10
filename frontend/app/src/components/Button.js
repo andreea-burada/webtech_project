@@ -1,7 +1,10 @@
 import React from 'react';
+import axios from 'axios';
 import './Button.css';
 import {Link} from 'react-router-dom';
 import LoginModal from "./LoginModal";
+
+axios.defaults.withCredentials = true;
 
 const STYLES=['btn--primary','btn--outline']
 
@@ -32,7 +35,7 @@ export const SignupButton=({children,type,onClick,buttonStyle,buttonSize})=>{
     return(
         <Link className='btn-mobile' to='/sign-up'>
             <button
-            className={`btn ${checkButtonStyle} ${checkButtonSize}`}
+            className={`${checkButtonStyle} ${checkButtonSize}`}
             >
             {/* this renders whatever i put in the button */}
                 {children}
@@ -49,7 +52,7 @@ export const LoginModalButton=({children,type,onClick,buttonStyle,buttonSize})=>
     const checkButtonSize=SIZES.includes(buttonSize)?buttonSize:SIZES[0];
 
     return(
-        <Link className='btn-mobile'>
+        <Link className='btn-mobile' to="/login">
             <button 
             variant="primary"
             onClick={() => setModalShow(true)}
@@ -59,6 +62,40 @@ export const LoginModalButton=({children,type,onClick,buttonStyle,buttonSize})=>
                 {children}
             </button>
             <LoginModal show={modalShow} onHide={() => setModalShow(false)} />
+        </Link>
+    )
+}
+
+export const LogoutButton=({children,type,onClick,buttonStyle,buttonSize})=>{
+    const [modalShow, setModalShow] = React.useState(false);
+    
+    const checkButtonStyle=STYLES[1];
+
+    const checkButtonSize=SIZES[0];
+
+    const handleLogout = async () => {
+        try {
+            await axios.post("http://localhost:8080/logout", { withCredentials: true })
+            .then((response) => {
+            //console.log(response);
+            localStorage.removeItem('username');
+            window.location.reload();
+            });
+        }
+        catch (error) {
+            console.log(error.response.data);
+        }
+    } 
+
+    return(
+        <Link className='btn-mobile' to="/">
+            <button
+            onClick={() => handleLogout() }
+            className={`${checkButtonStyle} ${checkButtonSize}`}
+            >
+            {/* this renders whatever i put in the button */}
+                {children}
+            </button>
         </Link>
     )
 }
