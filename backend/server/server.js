@@ -21,7 +21,14 @@ app.set('trust proxy', 1);
 //     secret: "adadddefuaihiuehfaaf",
 //     maxAge: 24 * 60 * 60 * 1000     // 24 hours
 // }));
-app.use(cors());
+
+var corsOptions = {
+    origin: 'http://localhost:3000',     // frontend
+    credentials: true,
+    optionsSuccessStatus: 200
+}
+app.use(cors(corsOptions));
+
 app.use(session({
     secret: "adadddefuaihiuehfaaf", // need to make more secure
     resave: true, 
