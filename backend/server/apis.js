@@ -37,12 +37,16 @@ const GetAllTeams = async (req, res) => {
         teams = await Team.findAll({
                 where: {
                     name: { [Op.like]: query }
-                }
+                },
+                order: [[ 'id', 'ASC' ]]
             });
         
     } else {
-        teams = await Team.findAll();
+        teams = await Team.findAll({
+            order: [[ 'id', 'ASC' ]]
+        });
     }
+    console.log(teams.dataValues);
 
     let username = 'zeceLaWeb';
     if (req.session.user) {
@@ -59,7 +63,7 @@ const GetAllTeams = async (req, res) => {
 
     user_gid = user_gid.dataValues.gid;
 
-    const unresolvedPromises = teams.map(async currentTeam => {
+    let unresolvedPromises = teams.map(async currentTeam => {
         // query to check if user is from team
         // SELECT is_admin FROM team_members AS tm, teams AS t WHERE t.id = tm.team_id AND tm.member_gid = [gid] AND tm.team_id=[id];
         let joined = 0;
@@ -84,6 +88,29 @@ const GetAllTeams = async (req, res) => {
         else 
             currentTeam_json.joined = 0;
 
+        // query to get number of team members
+        let noMembers = 0;
+        noMembers = await Team_Member.count({
+            where: {
+                team_id: currentTeam_json.id
+            }
+        });
+        currentTeam_json.noMembers = noMembers;
+
+        // query to get admin of team
+        let admin = '';
+        admin = await Student.findOne({
+            include: {
+                model: Team_Member,
+                required: true,
+                where: {
+                    id: currentTeam_json.id
+                }
+            },
+            attributes: [ 'username' ]
+        });
+        currentTeam_json.admin = admin.dataValues.username;
+
         teams_array.push(currentTeam_json);
     });
 
@@ -98,17 +125,141 @@ const GetAllTeams = async (req, res) => {
 
 const GetOneTeam = async (req, res) => {
     // get id of team
-    let id = req.params.id;
-    let team_json = {};
-    let projects_array = [];
-    let members_array = [];
+    let id = req.params.id;  
 
-    // let team_members_array = [];
-    // let team_member = await Team_Member.findAll();
-    // team_member.map(currentMember => team_members_array.push(currentMember.dataValues));
-    // console.log(team_members_array);
+    // get team information
+    let team_json = {};
+    team_json = await Team.findOne({
+        where: {
+            id: id
+        }
+    });
+    team_json = team_json.dataValues;
+    
+
+    // get team admin
+    let admin = '';
+    admin = await Student.findOne({
+        include: {
+            model: Team_Member,
+            required: true,
+            where: {
+                team_id: id,
+                is_admin: 1
+            }
+        },
+        attributes: [ 'username' ]
+    });
+    team_json.admin = admin.dataValues.username;
+
+
+    let username = 'zeceLaWeb';
+    if (req.session.user) {
+        username = req.session.user.username;
+    }
+    console.log("username", username);
+    // get username gid
+    let user_gid = await Student.findOne({
+        attributes: [ 'gid' ],
+        where: {
+            username: username
+        }
+    });
+
+    user_gid = user_gid.dataValues.gid;
+
+    // check if user is part of the team or not or is the owner
+    // 0 - not joined, 1 - joined, 2 - owner
+    let joined = 0;
+    joined = await Team_Member.findOne({
+        attributes: [ 'is_admin' ],
+        where: {
+            team_id: team_json.id,
+            member_gid: user_gid
+        }
+    });
+    if (joined) {
+        if (joined.dataValues.is_admin == 1)
+            team_json.joined = 2;
+        else
+            team_json.joined = 1;
+    }
+    else 
+        team_json.joined = 0;
+
+    // get team software projects
+    let projects_array = [];
+    let projects = await Software_Project.findAll({
+        include: {
+            model: Team_Member,
+            required: true,
+            where: {
+                team_id: id
+            }
+        }
+    });
+
+    let unresolvedPromises = projects.map(async (currentProject) => {
+        // get admin gid
+        let admin_gid = await Team_Member.findOne({
+            attributes: [ 'member_gid' ],
+            where: {
+                id: currentProject.owner_id
+            }
+        });
+        admin_gid = admin_gid.member_gid;
+
+        let admin_username = await Student.findOne({
+            attributes: [ 'username' ],
+            where: {
+                gid: admin_gid
+            }
+        });
+        admin_username = admin_username.dataValues.username;
+
+        projects_array.push({
+            id: currentProject.id,
+            name: currentProject.name,
+            repo_link: currentProject.repo_link,
+            owner: admin_username
+        })
+    })
+
+    // wait for the map to complete
+    await Promise.all(unresolvedPromises);
+    team_json.projects = projects_array;
+
+    // get team members
+    let members_array = [];
+    let members = await Team_Member.findAll({
+        where: {
+            team_id: id
+        }
+    });
+
+    unresolvedPromises = members.map(async (currentMember) => {
+        // get member information
+        let member_info = await Student.findOne({
+            where: {
+                gid: currentMember.member_gid
+            }
+        });
+        member_info = member_info.dataValues;
+
+        members_array.push({
+            username: member_info.username,
+            email: member_info.email
+        })
+    })
+
+    // wait for the map to complete
+    await Promise.all(unresolvedPromises);
+    team_json.members = members_array;
+
+    console.log(team_json);
+    return res.status(200).json(team_json);
 };
 
 module.exports = {
-    GetSessionUser, GetAllTeams
+    GetSessionUser, GetAllTeams, GetOneTeam
 }

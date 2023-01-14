@@ -13,7 +13,9 @@ function relateTables (){
             foreignKey: "member_gid",
             keyType: DataTypes.INTEGER
         });
-
+    Team_Member.belongsTo(Student, {
+        foreignKey: "member_gid"
+    });
     // one-to-many: team -> team_member
     // foreign key: team_id
     Team.hasMany(Team_Member,
@@ -32,6 +34,9 @@ function relateTables (){
             foreignKey: "owner_id",     // refers to the entry in table "team_members" not a student GID
             keyType: DataTypes.INTEGER
         });
+    Software_Project.belongsTo(Team_Member, {
+        foreignKey: "owner_id"
+    });
 
     // one-to-many: students -> bug
     // foreign key: reporter_gid
@@ -40,6 +45,9 @@ function relateTables (){
             foreignKey: "reporter_gid",
             keyType: DataTypes.STRING
         });
+    Bug.belongsTo(Student, {
+        foreignKey: "reporter_gid"
+    });
 
     // one-to-many: students -> bug
     // foreign key: fixer_gid
@@ -47,7 +55,10 @@ function relateTables (){
         {
             foreignKey: "fixer_gid",
             keyType: DataTypes.STRING
-        });    
+        });
+    Bug.belongsTo(Student, {
+        foreignKey: "fixer_gid"
+    });
 
     // one-to-many: software_project -> bug
     // foreign key: software_project_id
@@ -56,6 +67,9 @@ function relateTables (){
             foreignKey: "software_project_id",
             keyType: DataTypes.INTEGER
         });
+    Bug.belongsTo(Software_Project, {
+        foreignKey: "software_project_id"
+    })
 };
 
 module.exports = {

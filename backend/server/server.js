@@ -56,7 +56,8 @@ const {
 // apis
 const { 
     GetSessionUser,
-    GetAllTeams
+    GetAllTeams,
+    GetOneTeam
 } = require("./apis");
 
 app.get('/', (req, res) => {
@@ -67,6 +68,7 @@ app.get('/', (req, res) => {
 app.get('/api/user', GetSessionUser);
 
 app.get('/api/team/all', GetAllTeams);
+app.get('/api/team/:id', GetOneTeam);
 
 app.post('/register', RegisterRoute);
 
