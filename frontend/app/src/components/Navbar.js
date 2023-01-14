@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Button, LogoutButton, SignupButton } from "./Button";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
+import {VscDebugConsole} from 'react-icons/vsc'
 
 function Navbar() {
   // the initial value will be false
@@ -38,7 +39,7 @@ function Navbar() {
           <div className="navbar-container">
             {/* link replaces the a tag */}
             <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-              Powerpuff&nbsp; <i class="fa fa-bug" aria-hidden="true"></i>
+              Powerpuff&nbsp; <VscDebugConsole/>
             </Link>
             <div className="menu-icon" onClick={handleClick}>
               <i className={click ? "fas fa-times" : "fas fa-bars"} />
@@ -79,7 +80,7 @@ function Navbar() {
           <div className="navbar-container">
             {/* link replaces the a tag */}
             <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-              Powerpuff&nbsp;<i class="fa fa-bug" aria-hidden="true"></i>
+              Powerpuff&nbsp;<VscDebugConsole/>
             </Link>
             <div className="menu-icon" onClick={handleClick}>
               <i className={click ? "fas fa-times" : "fas fa-bars"} />

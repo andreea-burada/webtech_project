@@ -1,55 +1,55 @@
 [
     {
         "id": 1,
-        "teamName": "Barbaratii",
+        "name": "Barbaratii",
         "slogan": "Never give up",
         "initials": "Mtfd",
         "projects": [
             {
-                "projectId": 1,
-                "projectName": "albastraMare",
+                "id": 1,
+                "name": "albastraMare",
                 "admin": "test"
             },
             {
-                "projectId": 2,
-                "projectName": "albastraMov",
+                "id": 2,
+                "name": "albastraMov",
                 "admin": "mihaela"
             }
         ],
         "members": [
             {
-                "memberId": 1,
-                "username": "alehandro",
+                "id": 1,
+                "name": "alehandro",
                 "email": "ale@yahoo.com"
             },
             {
-                "memberId": 2,
-                "username": "bunica",
+                "id": 2,
+                "name": "bunica",
                 "email": "ale@yahoo.com"
             }
         ]
     },
     {
         "id": 2,
-        "teamName": "Bartii",
+        "name": "Bartii",
         "slogan": "Never give you up",
         "initials": "Mtd",
         "projects": [
             {
-                "projectId": 2,
-                "projectName": "albastraMic",
+                "id": 2,
+                "name": "albastraMic",
                 "admin": "albatrel"
             },
             {
-                "projectId": 3,
-                "projectName": "albastraMic",
+                "id": 3,
+                "name": "albastraMic",
                 "admin": "albatrel"
             }
         ],
         "members": [
             {
-                "memberId": 2,
-                "username": "alehandro",
+                "id": 2,
+                "name": "alehandro",
                 "email": "ale@yahoo.com"
             }
         ]

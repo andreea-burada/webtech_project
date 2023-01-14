@@ -44,12 +44,16 @@ const GetAllTeams = async (req, res) => {
         teams = await Team.findAll();
     }
 
+    let username = 'zeceLaWeb';
+    if (req.session.user) {
+        username = req.session.user.username;
+    }
+
     // get username gid
     let user_gid = await Student.findOne({
             attributes: [ 'gid' ],
             where: {
-                //username: req.session.username
-                username: 'barosanulXXL'
+                username: username
             }
         });
 
