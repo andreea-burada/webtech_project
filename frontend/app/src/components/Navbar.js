@@ -90,10 +90,8 @@ function Navbar() {
                   Home
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-                  Teams
-                </Link>
+              <li className='nav-item'>
+                <Link to='/viewBugs' className='nav-links' onClick={closeMobileMenu} >View Bugs</Link>
               </li>
               <li className="nav-item nav-username">
                 <span className="nav-links">{localStorage.username}</span>

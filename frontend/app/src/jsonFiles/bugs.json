@@ -1,0 +1,114 @@
+[
+    {
+        "id":1,
+        "title":"App crashes",
+        "severity":"MINOR",
+        "state":"In progress",
+        "solver":"monica",
+        "description":"descr1",
+        "project":"webtech"
+    },
+    {
+        "id":2,
+        "title":"App crashes2",
+        "state":"Solved",
+        "severity":"SERIOUS",
+        "description":"descr2",
+        "solver":"andreea",
+        "project":"webtech"
+       
+    },
+    {
+        "id":3,
+        "title":"App crashes3",
+        "state":"Unassigned",
+        "description":"descr3",
+        "severity":"SEVER",
+        "solver":"cata",
+        "project":"webtech"
+    },
+    {
+        "id":4,
+        "title":"App crashes",
+        "severity":"MINOR",
+        "state":"In progress",
+        "solver":"monica",
+        "description":"descr1",
+        "project":"webtech"
+    },
+    {
+        "id":5,
+        "title":"App crashes2",
+        "state":"Solved",
+        "severity":"SERIOUS",
+        "description":"descr2",
+        "solver":"andreea",
+        "project":"webtech"
+       
+    },
+    {
+        "id":6,
+        "title":"App crashes3",
+        "state":"Unassigned",
+        "description":"descr3",
+        "severity":"SEVER",
+        "solver":"cata",
+        "project":"webtech"
+    },
+    {
+        "id":7,
+        "title":"App crashes",
+        "severity":"MINOR",
+        "state":"In progress",
+        "solver":"monica",
+        "description":"descr1",
+        "project":"webtech"
+    },
+    {
+        "id":8,
+        "title":"App crashes2",
+        "state":"Solved",
+        "severity":"SERIOUS",
+        "description":"descr2",
+        "solver":"andreea",
+        "project":"webtech"
+       
+    },
+    {
+        "id":9,
+        "title":"App crashes3",
+        "state":"Unassigned",
+        "description":"descr3",
+        "severity":"SEVER",
+        "solver":"cata",
+        "project":"webtech"
+    },
+    {
+        "id":10,
+        "title":"App crashes",
+        "severity":"MINOR",
+        "state":"In progress",
+        "solver":"monica",
+        "description":"descr1",
+        "project":"webtech"
+    },
+    {
+        "id":11,
+        "title":"App crashes2",
+        "state":"Solved",
+        "severity":"SERIOUS",
+        "description":"descr2",
+        "solver":"andreea",
+        "project":"webtech"
+       
+    },
+    {
+        "id":12,
+        "title":"App crashes3",
+        "state":"Unassigned",
+        "description":"descr3",
+        "severity":"SEVER",
+        "solver":"cata",
+        "project":"webtech"
+    }
+]
