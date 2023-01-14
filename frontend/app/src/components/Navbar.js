@@ -38,7 +38,7 @@ function Navbar() {
           <div className="navbar-container">
             {/* link replaces the a tag */}
             <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-              Powerpuff <i class="fa fa-bug" aria-hidden="true"></i>
+              Powerpuff&nbsp; <i class="fa fa-bug" aria-hidden="true"></i>
             </Link>
             <div className="menu-icon" onClick={handleClick}>
               <i className={click ? "fas fa-times" : "fas fa-bars"} />
@@ -91,7 +91,7 @@ function Navbar() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/" className="nav-links" onClick={closeMobileMenu}>
+                <Link to="/view-teams" className="nav-links" onClick={closeMobileMenu}>
                   Teams
                 </Link>
               </li>
