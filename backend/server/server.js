@@ -1,6 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
+const { relateTables } = require("../models/relations");
+
 const express = require('express');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
@@ -40,6 +42,9 @@ app.use(session({
     }
 }));
 
+// establish DB relations
+relateTables();
+
 
 // routes
 const { 
@@ -50,14 +55,18 @@ const {
 
 // apis
 const { 
-    GetSessionUser 
+    GetSessionUser,
+    GetAllTeams
 } = require("./apis");
 
 app.get('/', (req, res) => {
     res.sendFile(path.resolve(__dirname, `..\\..\\frontend\\app\\public\\templates\\login_page.html`));
 });
 
+
 app.get('/api/user', GetSessionUser);
+
+app.get('/api/team/all', GetAllTeams);
 
 app.post('/register', RegisterRoute);
 
