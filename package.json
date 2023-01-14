@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "mysql2": "^3.0.1",
+    "sequelize": "^6.28.0",
+    "uuid": "^9.0.0"
+  }
+}
