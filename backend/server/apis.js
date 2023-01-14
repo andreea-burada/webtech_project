@@ -104,7 +104,8 @@ const GetAllTeams = async (req, res) => {
                 model: Team_Member,
                 required: true,
                 where: {
-                    id: currentTeam_json.id
+                    team_id: currentTeam_json.id,
+                    is_admin: 1
                 }
             },
             attributes: [ 'username' ]
