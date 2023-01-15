@@ -8,6 +8,7 @@ import FormSignIn from "./components/FormLogin";
 import FormSignUp from "./components/FormSignup";
 import ViewTeams from "./components/ViewTeams";
 import TeamInfo from "./components/TeamInfo";
+import ProjectInfo from "./components/ProjectInfo";
 
 function App() {
   // sync username with backend
@@ -42,6 +43,7 @@ function App() {
           <Route path="/login" exact component={FormSignIn} />
           <Route path="/view-teams" exact component={ViewTeams} />
           <Route path="/view-team/:id" exact component={TeamInfo} />
+          <Route path="/team/:team_id/project/:id" exact component={ProjectInfo} />
         </Switch>
       </Router>
     );
@@ -56,6 +58,7 @@ function App() {
         <Route path="/login" exact component={FormSignIn} />
         <Route path="/view-teams" exact component={ViewTeams} />
         <Route path="/view-team/:id" exact component={TeamInfo} />
+        <Route path="/team/:team_id/project/:id" exact component={ProjectInfo} />
       </Switch>
     </Router>
   );
