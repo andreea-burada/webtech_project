@@ -77,10 +77,12 @@ function TeamInfo() {
                     return (<div className="project-container" key={project.id}>
                         <h3 className="project-name"><strong>{project.name}</strong></h3>
                         <h4 className="admin">{project.admin}</h4>
-                        {(localStorage.username==project.admin) && 
+                        <a href={"/team/" + currentTeam.id + "/project/" + project.id}>
+                          {(localStorage.username==project.admin) && 
                             <button>Owned</button>}
-                        {!(localStorage.username==project.admin) && 
+                          {!(localStorage.username==project.admin) &&  
                             <button>View</button>}
+                        </a>
                     </div>)
                     })
                 }

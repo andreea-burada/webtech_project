@@ -450,6 +450,7 @@ const TeamLeave = async (req, res) => {
 
 // /api/team/:id/project/add - POST
 const AddOneProject = async (req, res) => {
+    
     // get the team id
     let team_id = req.params.id;
 
@@ -493,8 +494,8 @@ const AddOneProject = async (req, res) => {
 // /api/team/:team_id/project/:id - GET
 const GetOneProject = async (req, res) => {
     // get parameters of URL
-    let team_id = req.params.team_id;
-    let project_id = req.params.id;
+    let team_id = parseInt(req.params.team_id);
+    let project_id = parseInt(req.params.id);
 
     let project_json = {};
     // get general information of project
@@ -531,6 +532,21 @@ const GetOneProject = async (req, res) => {
         description: project_info.description,
         owner: admin_username
     };
+    
+    let username = 'zeceLaWeb';
+    if (req.session.user) {
+        username = req.session.user.username;
+    }
+
+    // get username gid
+    let user_gid = await Student.findOne({
+        attributes: [ 'gid' ],
+        where: {
+            username: username
+        }
+    });
+
+    user_gid = user_gid.dataValues.gid;
 
     // check if user can assign bugs to themselves to solve
     // -> part of the team
@@ -561,10 +577,8 @@ const GetOneProject = async (req, res) => {
         can_report = true;
     }
 
-    project_json.push({
-        can_assign: can_assign,
-        can_report: can_report
-    });
+    project_json.can_assign = can_assign;
+    project_json.can_report = can_report;
 
     // get bug list for project
     let bugs_array = [];
@@ -588,11 +602,11 @@ const GetOneProject = async (req, res) => {
 
         // get solver username if it exists
         let solver_username = '';
-        if (bug_info.solver_gid != '') {
+        if (bug_info.fixer_gid) {
             solver_username = Student.findOne({
                 attributes: [ 'username' ],
                 where: {
-                    gid: bug_info.solver_gid
+                    gid: bug_info.fixer_gid
                 }
             });
             solver_username = solver_username.dataValues.username;
@@ -614,7 +628,7 @@ const GetOneProject = async (req, res) => {
             severity: severity,
             state: bug_info.status,
             reporter: reporter_username,
-            solver_username: solver_username
+            solver: solver_username
         }
 
         bugs_array.push(bug_json);
@@ -623,7 +637,7 @@ const GetOneProject = async (req, res) => {
     // wait for the map to complete
     await Promise.all(unresolvedPromises);
 
-    project_json.push({bugs: bugs_array});
+    project_json.bugs = bugs_array;
 
     res.status(200).json(project_json)
 };
