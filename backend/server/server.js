@@ -57,7 +57,12 @@ const {
 const { 
     GetSessionUser,
     GetAllTeams,
-    GetOneTeam
+    GetOneTeam,
+    AddOneTeam,
+    TeamJoin,
+    TeamLeave,
+    AddOneProject,
+    GetOneProject
 } = require("./apis");
 
 app.get('/', (req, res) => {
@@ -69,6 +74,12 @@ app.get('/api/user', GetSessionUser);
 
 app.get('/api/team/all', GetAllTeams);
 app.get('/api/team/:id', GetOneTeam);
+app.post('/api/team/add', AddOneTeam);
+app.patch('/api/team/:id', TeamJoin);
+app.delete('/api/team/:id', TeamLeave);
+
+app.post('/api/team/:team_id/project/add', AddOneProject);
+app.get('/api/team/:team_id/project/:id', GetOneProject);
 
 app.post('/register', RegisterRoute);
 

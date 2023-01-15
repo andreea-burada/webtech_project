@@ -4,6 +4,7 @@ import Team from './teamInfo.json'
 // import './ViewTeams.css'
 import '../App.css'
 import './Teams.css'
+axios.defaults.withCredentials = true;
 
 var currentTeam = {};
 
@@ -15,6 +16,26 @@ function TeamInfo() {
     // path: /api/team/:id
     const [team, setTeam] = useState({});
     const [isLoading, setLoading] = useState(true);
+
+    const handleTeamJoin = () => {
+      axios.patch("http://localhost:8080/api/team/" + currentTeam.id, { withCredentials: true })
+        .then((response) => {
+          window.location.reload();
+        })
+        .catch((error) => {
+          console.log("error", error.response.data);
+        });
+    };
+
+    const handleTeamLeave = () => {
+      axios.delete("http://localhost:8080/api/team/" + currentTeam.id, { withCredentials: true })
+        .then((response) => {
+          window.location.reload();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
   
     useEffect(() => {
       try {
@@ -27,7 +48,7 @@ function TeamInfo() {
             //console.log(Teams);
           });
       } catch (error) {
-        console.log("error", error);
+        console.log("error", error.response.data);
       }
     }, []);
   
@@ -37,9 +58,9 @@ function TeamInfo() {
 
     let button = null;
     if (currentTeam.joined == 0) {
-      button = <button className="view-button">View</button>
+      button = <button className="join-button" onClick={handleTeamJoin}>Join</button>
     } else if (currentTeam.joined == 1) {
-      button = <button className="joined-button">Joined</button>
+      button = <button className="leave-button" onClick={handleTeamLeave}>Leave</button>
     } else if (currentTeam.joined == 2) {
       button = <button className="owned-button">OWNED</button>
     }
@@ -48,6 +69,7 @@ function TeamInfo() {
         <div className="team-container">
             <div className='team-details-container' key={currentTeam.id}>
                 <h2 className="team-name"><strong>{currentTeam.name}</strong></h2>
+                <h3 className="admin">Admin: {currentTeam.admin}</h3>
                 <h3 className="slogan">{currentTeam.slogan}</h3>
                 <h3 className='initials'>{currentTeam.initials}</h3>
                 <div className="soft-proj-container">
@@ -67,7 +89,7 @@ function TeamInfo() {
                 {currentTeam.members.map((member)=>{
                     return(
                     <div className="member-container" >
-                        <h3 className="member-username"><strong>Username: {member.name}</strong></h3>
+                        <h3 className="member-username"><strong>Username: {member.username}</strong></h3>
                         <h4 className="member-email">{member.email}</h4>
                     </div>
                     )
