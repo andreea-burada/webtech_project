@@ -27,13 +27,30 @@ export const Button=({children,type,onClick,buttonStyle,buttonSize})=>{
     )
 }
 
-export const Button2=({children,type,onClick,buttonStyle,buttonSize})=>{
+export const ButtonAdd=({children,type,onClick,buttonStyle,buttonSize})=>{
     const checkButtonStyle=STYLES.includes(buttonStyle) ? buttonStyle : STYLES[0];
 
     const checkButtonSize=SIZES.includes(buttonSize)?buttonSize:SIZES[0];
 
     return(
         <Link to='/addBug' className='btn-mobile'>
+            <button
+            className={`btn ${checkButtonStyle} ${checkButtonSize}`}
+            >
+            {/* this renders whatever i put in the button */}
+                {children}
+            </button>
+        </Link>
+    )
+}
+
+export const ButtonEdit=({children,type,onClick,buttonStyle,buttonSize})=>{
+    const checkButtonStyle=STYLES.includes(buttonStyle) ? buttonStyle : STYLES[0];
+
+    const checkButtonSize=SIZES.includes(buttonSize)?buttonSize:SIZES[0];
+
+    return(
+        <Link to='/editBug' className='btn-mobile'>
             <button
             className={`btn ${checkButtonStyle} ${checkButtonSize}`}
             >
