@@ -12,6 +12,50 @@ var Teams = [];
 function ViewTeam() {
   const [teams, setTeams] = useState([]);
   const [isLoading, setLoading] = useState(true);
+  const [isSearching, setSearching] = useState(false);
+
+  const handleSearch = () => {
+    setSearching(true);
+  }
+
+  // set keydown listener
+  const handleSearchEnter = (event) => {
+      console.log(event.key);
+      console.log(event.key);
+      if (event.key == 'Enter') {
+        handleSearch();
+      }
+  };
+  
+
+  useEffect(() => {
+    console.log('isSearching', isSearching);
+    if (isSearching == true) {
+      console.log("HERE");
+      // get search query
+      let query = document.getElementById("search-bar").value;
+      console.log(query);
+      let url = "http://localhost:8080/api/team/all";
+      if(!(query === '')){
+        url = "http://localhost:8080/api/team/all?search=" + query.toLowerCase();
+      }
+      console.log("url", url);
+      axios.get(url, { withCredentials: true })
+      .then((response) => {
+        console.log(response.data);
+        Teams = response.data;
+        setTeams(response.data);
+        setLoading(false);
+        //console.log(Teams);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+      setSearching(false);
+    } else {
+      console.log('Should be false', isSearching);
+    }
+  }, [isSearching]);
 
   useEffect(() => {
     // get team JSON from backend
@@ -37,8 +81,8 @@ function ViewTeam() {
   return (
     <div className="view-teams-container">
       <div className="search-bar-container">
-        <input className="search-bar" placeholder='Search team name...'></input>
-        <button className='search-button'><FaSearch/></button>
+        <input className="search-bar" id="search-bar" placeholder='Search team name...' onKeyDown={handleSearchEnter}></input>
+        <button className='search-button' onClick={handleSearch}><FaSearch/></button>
       </div>
       <div className="button-container"><button>Add Team</button></div>
       {
