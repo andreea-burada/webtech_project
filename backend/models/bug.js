@@ -25,6 +25,10 @@ const Bug = sequelize.define("bugs", {
         type: DataTypes.STRING(255),
         allowNull: false
     },
+    description: {
+        type: DataTypes.STRING(500),
+        allowNull: true
+    },
     status: {
         type: DataTypes.STRING(15),
         allowNull: false,

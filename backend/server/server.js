@@ -40,10 +40,10 @@ app.use(session({
     }
 }));
 
-const { createTables } = require('../models/tables');
+// setupDB
+const { setupDB } = require('../models/tables');
+setupDB();
 
-// create tables
-createTables();
 
 // routes
 const { 

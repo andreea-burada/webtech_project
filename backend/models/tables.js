@@ -7,17 +7,23 @@ const { Bug } = require("./bug");
 const { relateTables } = require("./relations");
 const { sequelize } = require("./db");
 
-relateTables();
+const setupDB = async () => {
+    relateTables();
 
-const createTables = async () => {
-    await sequelize.drop();
-    await Student.sync();
-    await Team.sync();
-    await Team_Member.sync();
-    await Software_Project.sync();
-    await Bug.sync();
-};
+    const createTables = async () => {
+        await sequelize.drop();
+        await Student.sync();
+        await Team.sync();
+        await Team_Member.sync();
+        await Software_Project.sync();
+        await Bug.sync();
+    };
+
+    await createTables();
+
+    require('../../db_setup/populate_db');
+}
 
 module.exports = {
-    createTables
+    setupDB
 }
