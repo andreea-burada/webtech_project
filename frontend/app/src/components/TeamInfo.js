@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import Team from './teamInfo.json'
-// import './ViewTeams.css'
 import '../App.css'
-import './Teams.css'
-axios.defaults.withCredentials = true;
+import './ViewTeams.css'
 
 var currentTeam = {};
 
