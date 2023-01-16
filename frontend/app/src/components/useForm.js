@@ -47,35 +47,37 @@ const useForm = (callback, validate) => {
     setIsSubmitting(true);
 
     console.log(Object.keys(validate(values)));
-    try {
-      await axios.post("http://localhost:8080/register", values, { withCredentials: true })
-      .then((response) => {
-        //console.log(response);
-        if (response.status == 200) {
-          window.location.href = "/login";
-        }
-      })
-      .catch((error) => {
-        console.log(error.response.data);
-        // add error alert box
-        let root = window.document.getElementById("root");
-        let errors = window.document.getElementsByClassName("error-container");
-        if (errors) {
-          for(let errorElement of errors) {
-            errorElement.remove();
+    if (Object.keys(validate(values)).length == 0) {
+      try {
+        await axios.post("http://localhost:8080/register", values, { withCredentials: true })
+        .then((response) => {
+          //console.log(response);
+          if (response.status == 200) {
+            window.location.href = "/login";
           }
-        }
-        let error_div = window.document.createElement("div");
-        error_div.className = "error-container";
-        error_div.innerHTML = `
-        <p>!!!ERROR: ${error.response.data.message}</p>
-        `;
-        root.prepend(error_div);
-      });
-      //document.querySelector('form').submit();
-    }
-    catch (error) {
-      console.log(error.response.data);
+        })
+        .catch((error) => {
+          console.log(error.response.data);
+          // add error alert box
+          let root = window.document.getElementById("root");
+          let errors = window.document.getElementsByClassName("error-container");
+          if (errors) {
+            for(let errorElement of errors) {
+              errorElement.remove();
+            }
+          }
+          let error_div = window.document.createElement("div");
+          error_div.className = "error-container";
+          error_div.innerHTML = `
+          <p>!!!ERROR: ${error.response.data.message}</p>
+          `;
+          root.prepend(error_div);
+        });
+        //document.querySelector('form').submit();
+      }
+      catch (error) {
+        console.log(error.response.data);
+      }
     }
     
   };
@@ -88,39 +90,41 @@ const useForm = (callback, validate) => {
     
 
     console.log(Object.keys(validate(values)));
-    try {
-      await axios.post("http://localhost:8080/login", values, { withCredentials: true })
-      .then((response) => {
-        //console.log(response);
-        if (response.status == 200) {
-          localStorage.setItem('username', values.username);
-          window.location.href = "../";
-        }
-      })
-      .catch((error) => {
-        console.log(error.response.data);
-        // add error alert box
-        let root = window.document.getElementById("root");
-        let errors = window.document.getElementsByClassName("error-container");
-        if (errors) {
-          for(let errorElement of errors) {
-            errorElement.remove();
+    if (Object.keys(validate(values)).length == 4) {
+      try {
+        await axios.post("http://localhost:8080/login", values, { withCredentials: true })
+        .then((response) => {
+          //console.log(response);
+          if (response.status == 200) {
+            localStorage.setItem('username', values.username);
+            window.location.href = "../";
           }
-        }
-        let error_div = window.document.createElement("div");
-        error_div.className = "error-container";
-        error_div.innerHTML = `
-        <p>!!!ERROR: ${error.response.data.message}</p>
-        `;
-        root.prepend(error_div);
-      });
-      //document.querySelector('form').submit();
-    }
-    catch (error) {
-      console.log(error.response.data);
-    }
-    
-  };
+        })
+        .catch((error) => {
+          console.log(error.response.data);
+          // add error alert box
+          let root = window.document.getElementById("root");
+          let errors = window.document.getElementsByClassName("error-container");
+          if (errors) {
+            for(let errorElement of errors) {
+              errorElement.remove();
+            }
+          }
+          let error_div = window.document.createElement("div");
+          error_div.className = "error-container";
+          error_div.innerHTML = `
+          <p>!!!ERROR: ${error.response.data.message}</p>
+          `;
+          root.prepend(error_div);
+        });
+        //document.querySelector('form').submit();
+      }
+      catch (error) {
+        console.log(error.response.data);
+      }
+      
+    };
+  } 
 
   return { handleChange, handleSubmit, values, errors, handleSignupSubmit, handleLoginSubmit };
 };
