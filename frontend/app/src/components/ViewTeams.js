@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import {FaSearch} from 'react-icons/fa'
 import axios from 'axios';
-//import Teams from './teamInfoSummary.json';
-// import './ViewTeams.css';
 import '../App.css';
-import './Teams.css';
+import './ViewTeams.css';
 import { Link } from 'react-router-dom';
 
 var Teams = [];
