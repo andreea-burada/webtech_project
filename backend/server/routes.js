@@ -23,22 +23,22 @@ const RegisterRoute = async (req, res) => {
     try {
         // check if student email exists in DB
         if (await Student.findOne({where:{email:String(student.email)}}) != null) {
-            res.json({"message": `Student with email ${student.email} already exists.`});
+            res.status(406).json({"message": `Student with email ${student.email} already exists.`});
         } 
         // check if student username exists in DB 
         else if (await Student.findOne({where:{username:String(student.username)}}) != null) {
-            res.json({"message": `Student with username ${student.username} already exists.`});
+            res.status(406).json({"message": `Student with username ${student.username} already exists.`});
         } 
         else {
             let newStudent = new Student(student);
             newStudent.save();
             console.log("Student added.");
-            res.redirect("http://localhost:3000");
+            return res.status(200).json({message: "Student added."});
         }
     }
     catch (error) {
         console.log(error);
-        res.sendFile(String(path.resolve(`${__dirname}\\..\\..\\frontend\\app\\public\\templates\\login_page.html`)));
+        return res.status(500).json({error: "Internal Server Error"});
     }
 }
 
@@ -49,27 +49,35 @@ const RegisterRoute = async (req, res) => {
 const LoginRoute = async (req, res) => {
     try {
         let form = req.body;
-        
-        // check if account with given username exists
-        let student = await Student.findOne({where:{username:String(form.username)}});
-        if (student == null) {
-            // username does not exist
-            return res.json({"message": `account with username ${form.username} does not exist.`});
+
+        if (form.username == '') {
+            return res.status(400).json({message: "Username cannot be empty"});
+        }
+        else if (form.password == '') {
+            return res.status(400).json({message: "Password cannot be empty"});
         }
         else {
-            // verify password
-            let isCorrect = verifyPassword(form.password, student.dataValues.salt, student.dataValues.password);
-            if (isCorrect == true) {
-                req.session.user = student;
-                return res.status(200).json({message: "New session established"});
-            } 
+            // check if account with given username exists
+            let student = await Student.findOne({where:{username:String(form.username)}});
+            if (student == null) {
+                // username does not exist
+                return res.status(404).json({"message": `Account with username "${form.username}" does not exist.`});
+            }
             else {
-                return res.status(403).json({message: "Password incorrect"});
+                // verify password
+                let isCorrect = verifyPassword(form.password, student.dataValues.salt, student.dataValues.password);
+                if (isCorrect == true) {
+                    req.session.user = student;
+                    return res.status(200).json({message: "New session established"});
+                } 
+                else {
+                    return res.status(403).json({message: "Password incorrect. Please try again"});
+                }
             }
         }
     }
     catch (error) {
-        return res.status(404).json({error: "Internal Server Error"});
+        return res.status(500).json({error: "Internal Server Error"});
     }
 };
 

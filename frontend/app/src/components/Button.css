@@ -1,7 +1,4 @@
-:root {
-    --primary: #fff;
-    --purple-light: rgb(186, 157, 255);
-  }
+@import './ColorTheme.css';
   
   .btn {
     padding: 8px 20px;

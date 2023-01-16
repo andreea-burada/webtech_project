@@ -40,6 +40,10 @@ app.use(session({
     }
 }));
 
+// setupDB
+const { setupDB } = require('../models/tables');
+setupDB();
+
 
 // routes
 const { 
@@ -50,14 +54,31 @@ const {
 
 // apis
 const { 
-    GetSessionUser 
+    GetSessionUser,
+    GetAllTeams,
+    GetOneTeam,
+    AddOneTeam,
+    TeamJoin,
+    TeamLeave,
+    AddOneProject,
+    GetOneProject
 } = require("./apis");
 
 app.get('/', (req, res) => {
     res.sendFile(path.resolve(__dirname, `..\\..\\frontend\\app\\public\\templates\\login_page.html`));
 });
 
+
 app.get('/api/user', GetSessionUser);
+
+app.get('/api/team/all', GetAllTeams);
+app.get('/api/team/:id', GetOneTeam);
+app.post('/api/team/add', AddOneTeam);
+app.patch('/api/team/:id', TeamJoin);
+app.delete('/api/team/:id', TeamLeave);
+
+app.post('/api/team/:team_id/project/add', AddOneProject);
+app.get('/api/team/:team_id/project/:id', GetOneProject);
 
 app.post('/register', RegisterRoute);
 

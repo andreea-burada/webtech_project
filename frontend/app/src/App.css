@@ -5,6 +5,10 @@
   font-family: 'PT Sans', sans-serif;
 }
 
+* body {
+  background-color: #1a1c21;
+}
+
 .home,
 .login,
 .sign-up {

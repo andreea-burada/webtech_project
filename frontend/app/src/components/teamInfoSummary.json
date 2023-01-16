@@ -1,0 +1,51 @@
+[
+    {
+        "id": 1,
+        "name": "Team1",
+        "noMembers": 4,
+        "admin": "Mirel",
+        "initials": "VULP"
+    },
+    {
+        "id": 2,
+        "name": "Team2",
+        "noMembers": 3,
+        "admin": "Mirela",
+        "initials": "GAZ"
+    },
+    {
+        "id": 3,
+        "name": "Team3",
+        "noMembers": 7,
+        "admin": "Alex",
+        "initials": "TRPT"
+    },
+    {
+        "id": 4,
+        "name": "Team4",
+        "noMembers": 10,
+        "admin": "Andrei",
+        "initials": "MCRL"
+    },
+    {
+        "id": 5,
+        "name": "Team5",
+        "noMembers": 1,
+        "admin": "Mirel",
+        "initials": "ZNP"
+    },
+    {
+        "id": 6,
+        "name": "Team6",
+        "noMembers": 3,
+        "admin": "Broa",
+        "initials": "BRED"
+    },
+    {
+        "id": 7,
+        "name": "Team7",
+        "noMembers": 6,
+        "admin": "Miruna",
+        "initials": "BDSM"
+    }
+]

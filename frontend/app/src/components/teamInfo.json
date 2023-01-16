@@ -1,0 +1,57 @@
+[
+    {
+        "id": 1,
+        "name": "Barbaratii",
+        "slogan": "Never give up",
+        "initials": "Mtfd",
+        "projects": [
+            {
+                "id": 1,
+                "name": "albastraMare",
+                "admin": "test"
+            },
+            {
+                "id": 2,
+                "name": "albastraMov",
+                "admin": "mihaela"
+            }
+        ],
+        "members": [
+            {
+                "id": 1,
+                "name": "alehandro",
+                "email": "ale@yahoo.com"
+            },
+            {
+                "id": 2,
+                "name": "bunica",
+                "email": "ale@yahoo.com"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Bartii",
+        "slogan": "Never give you up",
+        "initials": "Mtd",
+        "projects": [
+            {
+                "id": 2,
+                "name": "albastraMic",
+                "admin": "albatrel"
+            },
+            {
+                "id": 3,
+                "name": "albastraMic",
+                "admin": "albatrel"
+            }
+        ],
+        "members": [
+            {
+                "id": 2,
+                "name": "alehandro",
+                "email": "ale@yahoo.com"
+            }
+        ]
+    }
+]

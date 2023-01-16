@@ -5,7 +5,7 @@ import '../Form.css';
 import { Link } from 'react-router-dom';
 
 const FormSignup = ({ submitForm }) => {
-  const { handleChange, handleSubmit, values, errors, handleLoginSubmit } = useForm(
+  const { handleChange, handleSubmit, values, errors, handleSignupSubmit, handleLoginSubmit } = useForm(
     submitForm,
     validate
   );
