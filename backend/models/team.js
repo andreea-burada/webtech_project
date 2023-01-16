@@ -3,22 +3,24 @@ const { sequelize } = require("./db");
 
 const Team = sequelize.define("teams", {
     id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.INTEGER(5),
         allowNull: false,
         primaryKey: true,
         autoIncrement: true
     },
     name: {
-        type: 'citext',
-        allowNull: false
+        type: DataTypes.STRING(35),
+        allowNull: false,
+        unique: true
     },
     slogan: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(350),
         allowNull: true
     },
     initials: {
-        type: DataTypes.STRING,
-        allowNull: false
+        type: DataTypes.STRING(4),
+        allowNull: false,
+        unique: true
     }
 },
 {

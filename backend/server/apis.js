@@ -34,10 +34,16 @@ const GetAllTeams = async (req, res) => {
     if (req.query.search) {
         // get teams by search query
         let query = `%${req.query.search}%`;
+        query = query.toLowerCase();
+        // Sequelize.where(Sequelize.fn('lower', Sequelize.col('TITLE')), Sequelize.fn('lower', title))
+        // teams = await Team.findAll({
+        //         where: {
+        //             name: { [Op.like]: query }
+        //         },
+        //         order: [[ 'id', 'ASC' ]]
+        //     });
         teams = await Team.findAll({
-                where: {
-                    name: { [Op.like]: query }
-                },
+                where: Sequelize.where(Sequelize.fn('lower', Sequelize.col('name')), query),
                 order: [[ 'id', 'ASC' ]]
             });
         

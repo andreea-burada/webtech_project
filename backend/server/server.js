@@ -1,8 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 
-const { relateTables } = require("../models/relations");
-
 const express = require('express');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
@@ -42,9 +40,10 @@ app.use(session({
     }
 }));
 
-// establish DB relations
-relateTables();
+const { createTables } = require('../models/tables');
 
+// create tables
+createTables();
 
 // routes
 const { 

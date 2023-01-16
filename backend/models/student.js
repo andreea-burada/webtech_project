@@ -3,33 +3,34 @@ const { sequelize } = require("./db");
 
 const Student = sequelize.define("students", {
     gid: {
-        type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4,
+        type: DataTypes.STRING(36),
         allowNull: false,
         primaryKey: true
     },
     username: {
-        type: DataTypes.STRING,
-        allowNull: false
+        type: DataTypes.STRING(25),
+        allowNull: false,
+        unique: true
     },
     first_name: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(30),
         allowNull: true
     },
     last_name: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(30),
         allowNull: false
     },
     email: {
-        type: DataTypes.STRING,
-        allowNull: false
+        type: DataTypes.STRING(50),
+        allowNull: false,
+        unique: true
     },
     password: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(30),
         allowNull: false
     },
     salt: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(128),
         allowNull: false
     }
 },
