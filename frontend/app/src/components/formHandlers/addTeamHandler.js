@@ -49,7 +49,14 @@ const useForm = (callback, validate) => {
         .then((response) => {
           //console.log(response);
           if (response.status == 200) {
-            window.location.href = "/..";
+            let root = window.document.getElementById("root");
+            let errors = window.document.getElementsByClassName("error-container");
+            if (errors) {
+              for(let errorElement of errors) {
+                errorElement.remove();
+              }
+            }
+            window.location.href = "/view-teams";
           } else if (response.status == 201) {
             // add error alert box
             let root = window.document.getElementById("root");

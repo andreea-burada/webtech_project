@@ -327,7 +327,7 @@ const AddOneTeam = async (req, res) => {
             await team_admin.save();
 
             console.log("New team added.");
-            res.status(200);
+            res.status(200).json({message: "OK"});
         }
         
     }
