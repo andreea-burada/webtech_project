@@ -67,7 +67,7 @@ function TeamInfo() {
                 {currentTeam.members.map((member)=>{
                     return(
                     <div className="member-container" >
-                        <h3 className="member-username"><strong>Username: {member.name}</strong></h3>
+                        <h3 className="member-username"><strong>Username: {member.username}</strong></h3>
                         <h4 className="member-email">{member.email}</h4>
                     </div>
                     )
