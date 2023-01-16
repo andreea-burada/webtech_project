@@ -11,17 +11,18 @@ function relateTables (){
     Student.hasMany(Team_Member,
         {
             foreignKey: "member_gid",
-            keyType: DataTypes.INTEGER
+            keyType: DataTypes.STRING(36)
         });
     Team_Member.belongsTo(Student, {
-        foreignKey: "member_gid"
+        foreignKey: "member_gid",
+        keyType: DataTypes.STRING(36)
     });
     // one-to-many: team -> team_member
     // foreign key: team_id
     Team.hasMany(Team_Member,
         {
             foreignKey: "team_id",
-            keyType: DataTypes.INTEGER
+            keyType: DataTypes.INTEGER(5)
         });
     Team_Member.belongsTo(Team, {
         foreignKey: "team_id"
@@ -32,7 +33,7 @@ function relateTables (){
     Team_Member.hasMany(Software_Project,
         {
             foreignKey: "owner_id",     // refers to the entry in table "team_members" not a student GID
-            keyType: DataTypes.INTEGER
+            keyType: DataTypes.INTEGER(5)
         });
     Software_Project.belongsTo(Team_Member, {
         foreignKey: "owner_id"
@@ -43,7 +44,7 @@ function relateTables (){
     Student.hasMany(Bug,
         {
             foreignKey: "reporter_gid",
-            keyType: DataTypes.STRING
+            keyType: DataTypes.STRING(36)
         });
     Bug.belongsTo(Student, {
         foreignKey: "reporter_gid"
@@ -54,7 +55,7 @@ function relateTables (){
     Student.hasMany(Bug,
         {
             foreignKey: "fixer_gid",
-            keyType: DataTypes.STRING
+            keyType: DataTypes.STRING(36)
         });
     Bug.belongsTo(Student, {
         foreignKey: "fixer_gid"
@@ -65,7 +66,7 @@ function relateTables (){
     Software_Project.hasMany(Bug,
         {
             foreignKey: "software_project_id",
-            keyType: DataTypes.INTEGER
+            keyType: DataTypes.INTEGER(5)
         });
     Bug.belongsTo(Software_Project, {
         foreignKey: "software_project_id"

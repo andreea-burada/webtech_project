@@ -1,8 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 
-const { relateTables } = require("../models/relations");
-
 const express = require('express');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
@@ -42,8 +40,9 @@ app.use(session({
     }
 }));
 
-// establish DB relations
-relateTables();
+// setupDB
+const { setupDB } = require('../models/tables');
+setupDB();
 
 
 // routes
@@ -57,7 +56,12 @@ const {
 const { 
     GetSessionUser,
     GetAllTeams,
-    GetOneTeam
+    GetOneTeam,
+    AddOneTeam,
+    TeamJoin,
+    TeamLeave,
+    AddOneProject,
+    GetOneProject
 } = require("./apis");
 
 app.get('/', (req, res) => {
@@ -69,6 +73,12 @@ app.get('/api/user', GetSessionUser);
 
 app.get('/api/team/all', GetAllTeams);
 app.get('/api/team/:id', GetOneTeam);
+app.post('/api/team/add', AddOneTeam);
+app.patch('/api/team/:id', TeamJoin);
+app.delete('/api/team/:id', TeamLeave);
+
+app.post('/api/team/:team_id/project/add', AddOneProject);
+app.get('/api/team/:team_id/project/:id', GetOneProject);
 
 app.post('/register', RegisterRoute);
 

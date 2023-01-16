@@ -3,39 +3,39 @@ const { sequelize } = require("./db");
 
 const Bug = sequelize.define("bugs", {
     id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.INTEGER(5),
         allowNull: false,
         primaryKey: true,
         autoIncrement: true
     },
     software_project_id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.INTEGER(5),
         allowNull: false
     },
-    reporter_gid: {
-        type: DataTypes.STRING,
+    name: {
+        type: DataTypes.STRING(128),
         allowNull: false
     },
     severity: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.INTEGER(1),
         allowNull: false,
         defaultValue: 1
     },
     link: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(255),
         allowNull: false
     },
+    description: {
+        type: DataTypes.STRING(500),
+        allowNull: true
+    },
     status: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(15),
         allowNull: false,
         defaultValue: "NOT SOLVED"
     },
-    fixer_gid: {
-        type: DataTypes.STRING,
-        allowNull: true
-    },
     solution_link: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(255),
         allowNull: true
     }
     

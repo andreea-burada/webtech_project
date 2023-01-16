@@ -25,7 +25,7 @@ database.getConnection(function(error, connection) {
         CREATE TABLE team_members (id int(5) NOT NULL AUTO_INCREMENT, tester int(1) NOT NULL, member_gid varchar(36) NOT NULL, team_id int(5) NOT NULL, is_admin int(1) NOT NULL, PRIMARY KEY (id));
         CREATE TABLE teams (id int(5) NOT NULL AUTO_INCREMENT, name varchar(35) NOT NULL UNIQUE, slogan varchar(350), initials varchar(4) NOT NULL UNIQUE, PRIMARY KEY (id));
         CREATE TABLE software_projects (id int(5) NOT NULL AUTO_INCREMENT, name varchar(35) NOT NULL UNIQUE, description varchar(350), repo_link varchar(255) NOT NULL UNIQUE, owner_id int(5) NOT NULL, PRIMARY KEY (id));
-        CREATE TABLE bugs (id int(5) NOT NULL AUTO_INCREMENT, severity int(1) NOT NULL, description varchar(350), link varchar(255) NOT NULL, solution_link varchar(255), status varchar(15), software_project_id int(5) NOT NULL, reporter_gid varchar(36) NOT NULL, fixer_gid varchar(36) NOT NULL, PRIMARY KEY (id));
+        CREATE TABLE bugs (id int(5) NOT NULL AUTO_INCREMENT, severity int(1) NOT NULL, name varchar(128) NOT NULL, description varchar(350), link varchar(255) NOT NULL, solution_link varchar(255), status varchar(15), software_project_id int(5) NOT NULL, reporter_gid varchar(36) NOT NULL, fixer_gid varchar(36), PRIMARY KEY (id));
         ALTER TABLE team_members ADD CONSTRAINT fk_team_members_students FOREIGN KEY (member_gid) REFERENCES students (gid);
         ALTER TABLE team_members ADD CONSTRAINT fk_team_members_teams FOREIGN KEY (team_id) REFERENCES teams (id);
         ALTER TABLE bugs ADD CONSTRAINT fk_bugs_soft_project FOREIGN KEY (software_project_id) REFERENCES software_projects (id);

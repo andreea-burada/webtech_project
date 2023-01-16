@@ -143,3 +143,18 @@
   width: 80%;
   text-align: center;
 }
+
+.error-container {
+  color: white;
+  position: absolute;
+  top: 100px;
+  left: 10vh;
+  z-index: 999;
+  background-color: #460c13b6;
+  padding: 30px 30px 20px 30px;
+  align-content: center;
+  border-radius: 8px;
+  font-style: italic;
+  font-weight: 300;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.411);
+}

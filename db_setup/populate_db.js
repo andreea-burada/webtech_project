@@ -215,6 +215,7 @@ database.getConnection(function (error, connection) {
         INSERT INTO software_projects (name, description, repo_link, owner_id) VALUES ("Online Horoscope", "desc 3", "dummy link 3", 2);
 
         -- bugs
+        INSERT INTO bugs (reporter_gid, link, name, description, software_project_id, severity, status, fixer_gid, solution_link) VALUES ("${gid_array[ 7].gid}", "github.com/dummy", "SQL Injection", "desc", 1, 2, "NOT SOLVED", NULL, NULL);
         `,
     function (error, results) {
       connection.release();
@@ -222,5 +223,5 @@ database.getConnection(function (error, connection) {
       database.end();
     }
   );
-  console.log("Inserted teams");
+  console.log("Inserted teams, team members, projects and bugs.");
 });
