@@ -8,6 +8,7 @@ import FormSignUp from './components/FormSignup';
 import ViewBugs from './components/ViewBugs';
 import AddBug from './components/AddBug';
 import AddProject from './components/AddProject';
+import EditBug from './components/EditBug';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
          <Route path='/viewBugs' exact component={ViewBugs}/>
          <Route path='/addBug' exact component={AddBug}/>
          <Route path='/addProject' exact component={AddProject}/>
+         <Route path='/editBug' exact component={EditBug}/>
       </Switch>
     </Router>
     

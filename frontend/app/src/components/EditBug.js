@@ -5,13 +5,13 @@ import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Card from 'react-bootstrap/Card';
 
-function AddBug() {
+function EditBug() {
     return (
         <div className='form-content'>
         <Card className="bg-dark text-white">
         <Card.Body>
           <Card.Text>
-            <h1 class="display-4">Add bug</h1>
+            <h1 class="display-4">Edit bug</h1>
           </Card.Text>
         </Card.Body>
       </Card>
@@ -35,22 +35,25 @@ function AddBug() {
 
           <FloatingLabel
           controlId="floatingInput"
-          label="Reporter"
+          label="Project"
           className="mb-3">
-            <Form.Control size="lg" type="text" placeholder="Reporter" />
+            <Form.Control size="lg" type="text" placeholder="Project" />
           </FloatingLabel>
           
           <br />
 
           <FloatingLabel
           controlId="floatingInput"
-          label="Project"
+          label="State"
           className="mb-3">
-            <Form.Control size="lg" type="text" placeholder="Project" />
+            <Form.Select size="lg" >
+              <option value='NOT SOLVED'>NOT SOLVED</option>
+              <option value='IN PROGRESS'>IN PROGRESS</option>
+              <option value='IN REVIEW'>IN REVIEW</option>
+              <option value='SOLVED'>SOLVED</option>
+            </Form.Select>
           </FloatingLabel>
           
-          
-
           <br />
           <FloatingLabel
           controlId="floatingInput"
@@ -72,12 +75,12 @@ function AddBug() {
         </>
 
         <Button variant="secondary" size="lg">
-          Add bug
+          Edit bug
         </Button>   
           
         </div>
       );
 }
   
-  export default AddBug;
+  export default EditBug;
   

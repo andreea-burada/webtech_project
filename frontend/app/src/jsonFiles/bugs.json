@@ -6,7 +6,8 @@
         "state":"In progress",
         "solver":"monica",
         "description":"descr1",
-        "project":"webtech"
+        "project":"webtech",
+        "reporter":"andreea"
     },
     {
         "id":2,
@@ -15,7 +16,8 @@
         "severity":"SERIOUS",
         "description":"descr2",
         "solver":"andreea",
-        "project":"webtech"
+        "project":"webtech",
+        "reporter":"andreea"
        
     },
     {
@@ -25,7 +27,8 @@
         "description":"descr3",
         "severity":"SEVER",
         "solver":"cata",
-        "project":"webtech"
+        "project":"webtech",
+        "reporter":"andreea"
     },
     {
         "id":4,
@@ -34,7 +37,8 @@
         "state":"In progress",
         "solver":"monica",
         "description":"descr1",
-        "project":"webtech"
+        "project":"webtech",
+        "reporter":"andreea"
     },
     {
         "id":5,
@@ -43,7 +47,8 @@
         "severity":"SERIOUS",
         "description":"descr2",
         "solver":"andreea",
-        "project":"webtech"
+        "project":"webtech",
+        "reporter":"andreea"
        
     },
     {
@@ -53,7 +58,8 @@
         "description":"descr3",
         "severity":"SEVER",
         "solver":"cata",
-        "project":"webtech"
+        "project":"webtech",
+        "reporter":"andreea"
     },
     {
         "id":7,
@@ -62,7 +68,8 @@
         "state":"In progress",
         "solver":"monica",
         "description":"descr1",
-        "project":"webtech"
+        "project":"webtech",
+        "reporter":"andreea"
     },
     {
         "id":8,
@@ -71,7 +78,8 @@
         "severity":"SERIOUS",
         "description":"descr2",
         "solver":"andreea",
-        "project":"webtech"
+        "project":"webtech",
+        "reporter":"andreea"
        
     },
     {
@@ -81,7 +89,8 @@
         "description":"descr3",
         "severity":"SEVER",
         "solver":"cata",
-        "project":"webtech"
+        "project":"webtech",
+        "reporter":"andreea"
     },
     {
         "id":10,
@@ -90,7 +99,8 @@
         "state":"In progress",
         "solver":"monica",
         "description":"descr1",
-        "project":"webtech"
+        "project":"webtech",
+        "reporter":"andreea"
     },
     {
         "id":11,
@@ -99,7 +109,8 @@
         "severity":"SERIOUS",
         "description":"descr2",
         "solver":"andreea",
-        "project":"webtech"
+        "project":"webtech",
+        "reporter":"andreea"
        
     },
     {
@@ -109,6 +120,7 @@
         "description":"descr3",
         "severity":"SEVER",
         "solver":"cata",
-        "project":"webtech"
+        "project":"webtech",
+        "reporter":"andreea"
     }
 ]
