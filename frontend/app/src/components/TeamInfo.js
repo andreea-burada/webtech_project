@@ -50,6 +50,10 @@ function TeamInfo() {
     }
   }, []);
 
+  if (isLoading) {
+    return <div className='loading'>Loading...</div>
+  }
+
     let button = null;
     let buttonAddProject = null;
     if (currentTeam.joined == 0) {
