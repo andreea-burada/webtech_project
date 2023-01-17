@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import axios from "axios";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import "./App.css";
 import Home from "./components/pages/Home";
 import FormSignIn from "./components/FormLogin";
 import FormSignUp from "./components/FormSignup";
@@ -15,6 +14,8 @@ import AddBug from './components/AddBug';
 import AddProject from './components/AddProject';
 import EditBug from './components/EditBug';
 import BugInfo from "./components/BugInfo";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
 
 function App() {
   // sync username with backend

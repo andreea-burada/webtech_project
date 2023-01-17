@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Form.css';
+import './Errors.css';
 import FormSignUp from './pages/FormSignUp';
-import FormSuccess from './FormSucces';
 
 const Form = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -13,13 +13,12 @@ const Form = () => {
     <>
       <div className='form-container-sign-up'>
         <div className='form-content-left'>
+          <h1 id="sign-up">Sign <br></br>Up</h1>
 
         </div>
-        {!isSubmitted ? (
+        {!isSubmitted && (
           <FormSignUp submitForm={submitForm} />
-        ) : (
-          <FormSuccess />
-        )}
+        ) }
       </div>
     </>
   );

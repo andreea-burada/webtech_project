@@ -1,11 +1,170 @@
+@import './ColorTheme.css';
+
 .project-container {
     padding: 10px 10px;
     margin: 20px 400px;
     border-radius: 8px;
     border-bottom: 1px solid #0e0e10;
-    background-color: white;
+    background-color:#2a2e36;
     border: 0.05px solid #3b3b42;
     -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
     transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
     overflow: hidden;
+    color:var(--primary);
+    line-height: 30px;
+    box-shadow: 1px 1px 16px var(--purple-sixth);
 }
+
+.project-details-container{
+    font-size:20px;
+}
+
+.bugs-container{
+    line-height: 40px;
+    font-size:20px;
+    overflow-y: auto;
+    display: block !important;
+    max-height: 400px;
+    margin-bottom: 30px;
+    border: 1px solid rgb(83, 83, 83);
+    border-radius: 8px !important;
+    padding: 3vh;
+}
+
+.bug-container {
+    border: 3px solid var(--background-dark-color);
+    padding: 10px 40%;
+    display: inline-block;
+    max-height: 850px;
+}
+
+div.bug-container  {
+    margin-bottom: 10px !important;
+}
+
+.bug-container > a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.bug-container > a:hover {
+    color: var(--mint-accent);
+}
+
+.bugs-title {
+    font-size: 6vh;
+    padding: 5vh;
+    text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.438);
+}
+
+.project-details-container > .project-name, 
+.project-details-container > .bugs-container
+{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.project-details-container > h2 {
+    font-size: 8vh;
+    text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.438);
+}
+
+.project-details-container > h3 {
+    margin-left: 4vh;
+}
+
+.add-bug-button{
+    box-shadow: 8px 5px 5px #0e0e106b;
+    border-style: none;
+    background-color: var(--purple-third);
+    padding: 15px 20px;
+    border-radius:5px;
+    font-size: 20px;
+    color:var(--primary);
+    margin-bottom: 2vh;
+    margin-left: 2vh;
+}
+
+.add-bug-button:hover{
+    background-color: var(--primary);
+    color: var(--background-dark-color);
+    transition: all 0.15s ease-out;
+}
+
+.add-bug-button.disabled {
+    box-shadow: 3px 5px 5px #0e0e106b;
+    border-style: none;
+    background-color: rgb(72, 72, 85);
+    color: whitesmoke;
+    font-size: 20px;
+    margin-right: 2vh;
+}
+
+.add-bug-button.disabled:hover {
+    background-color: rgb(121, 117, 128);
+    color: var(--background-dark-color);
+    transition: all 0.15s ease-out;
+    cursor: not-allowed;
+}
+
+.assign-button-container {
+    min-width: 50px;
+    display: inline;
+}
+
+.assign-button-container > button {
+    display: inline-block !important;
+    margin-bottom: 10px;
+}
+
+.assign-button{
+    box-shadow: 8px 5px 5px #0e0e10;
+    border-style: none;
+    background-color: var(--mint-main);
+    padding-left: 11px;
+    padding-right: 11px;
+    border-radius:5px;
+    font-size:16px;
+    margin-right: 10px;
+}
+
+.assign-button:hover{
+    background-color: var(--primary);
+    color: var(--background-dark-color);
+    transition: all 0.15s ease-out;
+}
+
+.assign-button.disabled {
+    box-shadow: 3px 5px 5px #0e0e106b;
+    border-style: none;
+    background-color: rgb(72, 72, 85);
+    color: whitesmoke;
+    padding-left: 11px;
+    padding-right: 11px;
+    border-radius:5px;
+    font-size:16px;
+    margin-right: 2vh;
+}
+
+.assign-button.disabled:hover{
+    background-color: rgb(121, 117, 128);
+    color: var(--background-dark-color);
+    transition: all 0.15s ease-out;
+    cursor: not-allowed;
+}
+
+.project-name{
+    color:var(--purple-third);
+    font-size:30px;
+}
+
+.owner {
+    font-style: italic;
+    color: var(--mint-main);
+}
+
+
+
+
+

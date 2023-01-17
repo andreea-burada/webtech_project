@@ -1,3 +1,5 @@
+@import './ColorTheme.css';
+
 .form-container {
   margin: 50px auto 100px auto;
   width: 1000px;
@@ -16,12 +18,12 @@
 
 
 .form-container-sign-up {
-  margin: 50px auto 100px auto;
+  margin: 40px auto 100px auto;
   width: 1000px;
   box-shadow: 0 5px 8px 0 #00000033, 0 7px 20px 0 #00000033;
   position: relative;
   border-radius: 10px;
-  height: 800px;
+  height: 900px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   background-image: linear-gradient(270deg,
@@ -43,6 +45,31 @@
 .form-content-left {
   border-radius: 10px 0 0 10px;
   position: relative;
+}
+
+.form-content-left #sign-up{
+  color: var(--primary);
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin-top:130px;
+  font-size: 80px;
+  margin-left:-220px;
+  line-height:80px;
+  text-shadow:7px 1px 6px #020333;
+}
+
+.form-content-left #log-in{
+  color: var(--primary);
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin-top:80px;
+  font-size: 80px;
+  margin-left:-220px;
+  line-height:80px;
+  text-shadow:7px 1px 6px #020333;
+
 }
 
 .form-success {
@@ -142,19 +169,13 @@
   color: #fff;
   width: 80%;
   text-align: center;
+  margin-left:35%;
+  letter-spacing: 1px;
+
 }
 
-.error-container {
-  color: white;
-  position: absolute;
-  top: 100px;
-  left: 10vh;
-  z-index: 999;
-  background-color: #460c13b6;
-  padding: 30px 30px 20px 30px;
-  align-content: center;
-  border-radius: 8px;
-  font-style: italic;
-  font-weight: 300;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.411);
+.form-input-login > #sign-up-again{
+  margin-left:-21%;
 }
+
+

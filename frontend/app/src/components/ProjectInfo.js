@@ -98,18 +98,18 @@ const ProjectInfo = () => {
   let assignButton = null;
   if (currentProject.can_assign == false) {
     assignButton = (
-      <><button className="assign-button disabled">Assign (disabled)</button><button className="unassign-button disabled">Unassign (disabled)</button></>
+      <><button className="assign-button disabled" disabled="true">Assign</button><button className="assign-button disabled" disabled="true">Unassign</button></>
     );
   } else {
     assignButton = ( 
-    <><button className="assign-button" onClick={handleAssign}>Assign</button><button className="unassign-button" onClick={handleUnassign}>Unassign</button></>
+    <><button className="assign-button" onClick={handleAssign}>Assign</button><button className="assign-button" onClick={handleUnassign}>Unassign</button></>
     );
   }
 
   let reportButton = null;
   if (currentProject.can_report == false) {
     
-    reportButton = <button className="add-bug-button disabled">Add Bug (disabled)</button>
+    reportButton = <button className="add-bug-button disabled">Add Bug</button>
   } else {
     let url = "/project/" + currentProject.id + "/bug/add";
     reportButton = (
@@ -120,12 +120,14 @@ const ProjectInfo = () => {
   return (
     <div className="project-container">
       <div className="project-details-container" key={currentProject.id}>
-        <h2 className="project-name">
-          <strong>{currentProject.name}</strong>
-        </h2>
-        <h3 className="owner">Owner: {currentProject.owner}</h3>
-        <h3 className="repo_link">{currentProject.repo_link}</h3>
-        <h3 className="description">{currentProject.description}</h3>
+          <h2 className="project-name">
+            <strong>{currentProject.name}</strong>
+          </h2>
+          <h3 className="owner">Owner: {currentProject.owner}</h3>
+          <h3 className="repo_link">Repo: {currentProject.repo_link}</h3>
+          <h3 className="description">Description: {currentProject.description}</h3>
+        </div>
+        <div className="bugs-title">Bugs:</div>
         <div className="bugs-container">
           {currentProject.bugs.map((bug) => {
             let where = "/project/" + currentProject.id + "/bug/" + bug.id;
@@ -133,19 +135,18 @@ const ProjectInfo = () => {
               <div className="bug-container" key={bug.id}>
                 <Link to={where}>
                 <h3 className="bug-name">
-                  <strong>{bug.name}</strong>
+                  <strong>Name: {bug.name}</strong>
                 </h3>
                 </Link>
                 <h4 className="reporter">Reporter: {bug.reporter}</h4>
-                <h4 className="fixer">Solver: {bug.solver}</h4>
-                <h5 className="state">{bug.state}</h5>
-                <h3 className="severity">{bug.severity}</h3>
-                <div className="assign-button-container" id={bug.id}>{assignButton}</div>
+                <h4 className="fixer">Fixer: {bug.solver}</h4>
+                <h5 className="state">State: {bug.state}</h5>
+                <h3 className="severity">Severity: {bug.severity}</h3>
+                <div className="assign-button-container">{assignButton}</div>
               </div>
             );
           })}
         </div>
-      </div>
       <div className="add-bug-container">
         {reportButton}
       </div>

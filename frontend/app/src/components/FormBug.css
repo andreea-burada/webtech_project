@@ -1,17 +1,50 @@
-.form-content{
-    width:1600px;
-    background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgba(138,91,171,255) 100%);
+@import "./ColorTheme.css";
+
+.form-content {
+    width: 1300px;
+    /* background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgba(138,91,171,255) 100%);*/
+    /* background-image: linear-gradient(270deg,
+      hsl(240deg 7% 11%) 0%,
+      rgb(36, 36, 61) 50%,
+      hsl(262deg 56% 17%) 100%,); */
+    background-image: linear-gradient(270deg,
+            hsl(222deg 33% 8%) 0%,
+            hsl(222deg 27% 8%) 7%,
+            hsl(223deg 23% 9%) 14%,
+            hsl(223deg 20% 10%) 21%,
+            hsl(223deg 17% 10%) 29%,
+            hsl(223deg 15% 11%) 36%,
+            hsl(223deg 13% 11%) 43%,
+            hsl(223deg 12% 12%) 50%,
+            hsl(233deg 13% 12%) 57%,
+            hsl(240deg 15% 13%) 64%,
+            hsl(246deg 17% 13%) 71%,
+            hsl(249deg 20% 13%) 79%,
+            hsl(252deg 22% 13%) 86%,
+            hsl(254deg 25% 14%) 93%,
+            hsl(256deg 27% 14%) 100%);
     /* display: flex; */
     /* flex-wrap: wrap; */
     margin-top: 10px;
-    margin-left:35px;
+    margin-left: 30px;
     border-radius: 5px;
     position: absolute;
     /* z-index: 10; */
-    
+
 
 }
 
+.background-add-project,
+.background-add-bug,
+.background-view-bug{
+    background-color: transparent !important;
+}
+
+/* display-6  {
+    font-size: calc(1.475rem + 2.7vw) !important;
+    font-weight: 300 !important;
+    line-height: 1.2 !important;
+} */
 
 /* .form-content h1{
     min-width: 100%;
@@ -48,4 +81,4 @@
 
 .mbsc-ios .mbsc-form-grid .mbsc-textfield-wrapper {
     margin: 0.75em 1em;
-} 
+}

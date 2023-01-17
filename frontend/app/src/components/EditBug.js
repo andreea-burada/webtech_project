@@ -6,6 +6,7 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Card from 'react-bootstrap/Card';
 import useForm from "../components/formHandlers/editBugHandler";
 import validateInfo from "../components/formHandlers/editBugValidate";
+import '../components/FormBug.css';
 
 var currentBug = {};
 
@@ -59,11 +60,11 @@ function EditBug() {
   }
     if (currentBug.tester == false)
       return (
-          <div className='form-content'>
-          <Card className="bg-dark text-white">
+          <div className='form-content container-md'>
+          <Card className="background-view-bug text-white">
           <Card.Body>
             <Card.Text>
-              <h1 class="display-4">View Bug</h1>
+              <h1 class="display-6 big-title">View Bug</h1>
             </Card.Text>
           </Card.Body>
         </Card>

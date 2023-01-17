@@ -7,6 +7,7 @@ import useForm from './formHandlers/addBugHandler';
 import validateInfo from './formHandlers/addBugValidate';
 import '../components/FormBug.css';
 
+
 function AddBug() {
     const [isSubmitted, setIsSubmitted] = useState(false);
     function submitForm() {
@@ -18,11 +19,11 @@ function AddBug() {
       validateInfo
     );
     return (
-        <div className='form-content'>
-        <Card className="bg-dark text-white">
+        <div className='form-content container-md'>
+        <Card className="background-add-bug text-white">
         <Card.Body>
           <Card.Text>
-            <h1 class="display-4">Add bug</h1>
+            <h1 class="display-6">Add bug</h1>
           </Card.Text>
         </Card.Body>
       </Card>

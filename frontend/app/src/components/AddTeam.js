@@ -27,8 +27,8 @@ function AddTeam() {
 
 
     return (
-        <div className='form-content'>
-            <Card className="bg-dark text-white">
+        <div className='form-content container-md'>
+            <Card className="text-white background-add-team">
                 <Card.Body>
                     <Card.Text>
                         <h1 class="display-6 big-title">Add Team</h1>

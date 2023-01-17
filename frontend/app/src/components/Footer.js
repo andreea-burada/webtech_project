@@ -1,6 +1,7 @@
 import React from 'react';
 import './Footer.css';
 import { Link } from 'react-router-dom';
+import {VscDebugConsole} from 'react-icons/vsc'
 
 function Footer() {
   return (
@@ -19,7 +20,6 @@ function Footer() {
           <div class='footer-link-items'>
             <h2>Contact Us</h2>
             <Link to='/'>Contact</Link>
-            <Link to='/'>Support</Link>
           </div>
         </div>
       </div>
@@ -27,8 +27,7 @@ function Footer() {
         <div class='social-media-wrap'>
           <div class='footer-logo'>
             <Link to='/' className='social-logo'>
-              Powerpuff
-              <i class='fab fa-typo3' />
+              Powerpuff <VscDebugConsole/>
             </Link>
           </div>
           <small class='website-rights'>Powerpuff © 2023</small>
