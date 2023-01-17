@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 import '../App.css'
 import './ViewTeams.css'
@@ -54,12 +55,21 @@ function TeamInfo() {
     }
 
     let button = null;
+    let buttonAddProject = null;
     if (currentTeam.joined == 0) {
       button = <button className="join-button" onClick={handleTeamJoin}>Join</button>
     } else if (currentTeam.joined == 1) {
       button = <button className="leave-button" onClick={handleTeamLeave}>Leave</button>
+      let where = "/team/" + currentTeam.id + "/add";
+      buttonAddProject = (
+        <><Link to={where}><button className="add-project">Add Project</button></Link></>
+      );
     } else if (currentTeam.joined == 2) {
       button = <button className="owned-button">OWNED</button>
+      let where = "/team/" + currentTeam.id + "/add";
+      buttonAddProject = (
+        <><Link to={where}><button className="add-project">Add Project</button></Link></>
+      );
     }
 
     return (
@@ -93,7 +103,7 @@ function TeamInfo() {
                     </div>
                     )
                 })}
-                
+                {buttonAddProject}
                 </div>
                 {button}
             </div>

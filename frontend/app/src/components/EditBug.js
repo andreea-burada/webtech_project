@@ -1,5 +1,5 @@
 import React from 'react';
-import '../components/FormBug.css';
+//import '../components/FormBug.css';
 import { Button} from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';

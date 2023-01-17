@@ -1,7 +1,6 @@
 import React from 'react';
 import {useState} from 'react';
 import './ViewBugs.css'
-import '../App.css';
 import Bugs from '../jsonFiles/bugs.json'
 import { Button,ButtonEdit,ButtonAdd } from './Button';
  

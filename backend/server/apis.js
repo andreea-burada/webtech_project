@@ -455,11 +455,11 @@ const TeamLeave = async (req, res) => {
     }
 };
 
-// /api/team/:id/project/add - POST
+// /api/team/:team_id/project/add - POST
 const AddOneProject = async (req, res) => {
     
     // get the team id
-    let team_id = req.params.id;
+    let team_id = req.params.team_id;
 
     // get current user gid
     let username = "zeceLaWeb";

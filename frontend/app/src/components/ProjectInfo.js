@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
-// import './ViewTeams.css'
 import "../App.css";
 import "./ViewTeams.css";
 axios.defaults.withCredentials = true;
@@ -109,9 +108,13 @@ const ProjectInfo = () => {
 
   let reportButton = null;
   if (currentProject.can_report == false) {
-    reportButton = <button className="add-bug-button disabled">Add Bug (disabled)</button>;
+    
+    reportButton = <button className="add-bug-button disabled">Add Bug (disabled)</button>
   } else {
-    reportButton = <button className="add-bug-button">Add Bug</button>;
+    let url = "/project/" + currentProject.id + "/bug/add";
+    reportButton = (
+    <><Link to={url}><button className="add-bug-button">Add Bug</button></Link></>
+    );
   }
 
   return (
