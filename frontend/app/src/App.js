@@ -15,6 +15,7 @@ import AddBug from './components/AddBug';
 import AddProject from './components/AddProject';
 import EditBug from './components/EditBug';
 import BugInfo from "./components/BugInfo";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   // sync username with backend
