@@ -2,3 +2,9 @@
     display:flex;
     justify-content: center;
 }
+
+.background-add-team{
+    background-color: transparent !important;
+}
+
+

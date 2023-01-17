@@ -5,8 +5,8 @@
     margin: 20px 400px;
     border-radius: 8px;
     border-bottom: 1px solid #0e0e10;
-    background-color: #0c0c0c;
-    border: 0.05px solid #3b3b42;
+    background-color: #13151a;
+    border: 0.05px solid #3b3d42;
     -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
     transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
     overflow: hidden;

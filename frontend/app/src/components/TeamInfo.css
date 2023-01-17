@@ -6,11 +6,13 @@
     justify-content: center;
     box-shadow: 1px 1px 16px var(--purple-sixth);
     gap: 10px;
-    max-width: 900px;
-    max-height: 1200px;
+    /* max-width: 900px; */
+    max-width:fit-content;
+    /* max-height: 1200px; */
+    max-width:fit-content;
     padding: 200px 250px 250px 250px;
     border-radius: 20px;
-    margin: auto;
+    margin-top: 50px;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -29,6 +31,8 @@
     margin-left: 20px;
     margin-top: -200px;
     margin-bottom: 0;
+    /* height: 100px;
+    width: 400px; */
 }
 
 .team-details>.team-name {
@@ -108,7 +112,22 @@
     padding-right: 11px;
 }
 
+.add-project{
+    background-color: var(--purple-light);
+    box-shadow: 8px 5px 5px #0e0e10;
+    border-style: none;
+    border-radius: 3px;
+    padding-left: 11px;
+    padding-right: 11px;
+    color:white;
+}
 
+
+.add-project:hover{
+    background-color: var(--purple-light);
+    color:#0e0e10;
+    background-color: white;
+}
 
 .join-button {
     background-color: var(--mint-main);
