@@ -80,7 +80,7 @@ function ViewTeam() {
     <div className="view-teams-container">
       <div className="search-bar-container">
         <input className="search-bar" id="search-bar" placeholder='Search team name...' onKeyDown={handleSearchEnter}></input>
-        <button className='search-button' onClick={handleSearch}><FaSearch/></button>
+        <button className='search-button' onClick={handleSearch}><FaSearch id="search-icon" /></button>
       </div>
       <div className="button-container"><button>Add Team</button></div>
       {
