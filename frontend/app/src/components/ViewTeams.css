@@ -117,3 +117,7 @@ h2 {
     border-radius: 8px;
     cursor: pointer;
 }
+
+.bug-container {
+    cursor: pointer;
+}

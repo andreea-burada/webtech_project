@@ -54,14 +54,20 @@ const {
 
 // apis
 const { 
-    GetSessionUser,
-    GetAllTeams,
-    GetOneTeam,
-    AddOneTeam,
-    TeamJoin,
-    TeamLeave,
-    AddOneProject,
-    GetOneProject
+    GetSessionUser, 
+    GetAllTeams, 
+    GetOneTeam, 
+    AddOneTeam, 
+    TeamJoin, 
+    TeamLeave, 
+    AddOneProject, 
+    GetOneProject, 
+    AddOneBug, 
+    EditOneBug, 
+    AssignBug, 
+    UnassignBug, 
+    UpdateStatus,
+    GetOneBug
 } = require("./apis");
 
 app.get('/', (req, res) => {
@@ -71,14 +77,24 @@ app.get('/', (req, res) => {
 
 app.get('/api/user', GetSessionUser);
 
+// team routes
 app.get('/api/team/all', GetAllTeams);
 app.get('/api/team/:id', GetOneTeam);
 app.post('/api/team/add', AddOneTeam);
 app.patch('/api/team/:id', TeamJoin);
 app.delete('/api/team/:id', TeamLeave);
 
+// project routes
 app.post('/api/team/:team_id/project/add', AddOneProject);
 app.get('/api/team/:team_id/project/:id', GetOneProject);
+
+// bug routes
+app.post('/api/:project_id/bug/add', AddOneBug);
+app.get('/api/:project_id/bug/:id', GetOneBug);
+app.patch('/api/:project_id/bug/:id', EditOneBug);
+app.post('/api/:project_id/bug/:id/assign', AssignBug);
+app.delete('/api/:project_id/bug/:id/assign', UnassignBug);
+app.patch('/api/:project_id/bug/:id/status', UpdateStatus);
 
 app.post('/register', RegisterRoute);
 
