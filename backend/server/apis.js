@@ -763,9 +763,9 @@ const GetOneBug = async (req, res) => {
         }
     });
     if (tester) {
-        tester = true;
-    } else {
         tester = false;
+    } else {
+        tester = true;
     };
 
     // get reporter username
@@ -807,6 +807,7 @@ const GetOneBug = async (req, res) => {
         description: bug_info.description,
         link: bug_info.link,
         reporter: reporter_username,
+        tester: tester,
         severity: severity,
         state: bug_info.status,
         solution_link: bug_info.solution_link,
@@ -881,9 +882,9 @@ const EditOneBug = async (req, res) => {
         }
     });
     if (tester) {
-        tester = true;
-    } else {
         tester = false;
+    } else {
+        tester = true;
     };
 
     let updated_bug_json = {};
@@ -892,7 +893,7 @@ const EditOneBug = async (req, res) => {
         //              if solution_link is modified we assume that the user who sends the PATCH request
         
         // check if solution_link is the same
-        if (form.solution_link != form.solution_link) {
+        if (bug_json.solution_link == form.solution_link) {
             // fixer is the same
             updated_bug_json = {
                 description: form.description,
@@ -903,7 +904,8 @@ const EditOneBug = async (req, res) => {
             updated_bug_json = {
                 description: form.description,
                 status: form.state,
-                fixer_gid: requester_gid
+                fixer_gid: requester_gid,
+                solution_link: form.solution_link
             };
         }
     } else {
