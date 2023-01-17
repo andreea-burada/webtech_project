@@ -83,11 +83,11 @@ function TeamInfo() {
                 {currentTeam.projects.map((project) => {
                     return (<div className="project-container" key={project.id}>
                         <h3 className="project-name"><strong>{project.name}</strong></h3>
-                        <h4 className="admin">{project.admin}</h4>
+                        <h4 className="admin">{project.owner}</h4>
                         <a href={"/team/" + currentTeam.id + "/project/" + project.id}>
-                          {(localStorage.username==project.admin) && 
+                          {(localStorage.username==project.owner) && 
                             <button>Owned</button>}
-                          {!(localStorage.username==project.admin) &&  
+                          {!(localStorage.username==project.owner) &&  
                             <button>View</button>}
                         </a>
                     </div>)

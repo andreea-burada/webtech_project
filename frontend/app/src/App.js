@@ -13,6 +13,7 @@ import ViewBugs from './components/ViewBugs';
 import AddBug from './components/AddBug';
 import AddProject from './components/AddProject';
 import EditBug from './components/EditBug';
+import BugInfo from "./components/BugInfo";
 
 function App() {
   // sync username with backend
@@ -52,6 +53,7 @@ function App() {
           <Route path='/project/:project_id/bug/add' exact component={AddBug}/>
           <Route path='/team/:team_id/add' exact component={AddProject}/>
           <Route path='/project/:project_id/bug/:id' exact component={EditBug}/>
+          
         </Switch>
       </Router>
     );

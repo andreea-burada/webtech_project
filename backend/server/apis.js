@@ -711,7 +711,7 @@ const GetOneBug = async (req, res) => {
 
     let bug_json = {};
     // get info
-    let bug_info = Bug.findOne({
+    let bug_info = await Bug.findOne({
         where: {
             id: id
         }
@@ -769,7 +769,7 @@ const GetOneBug = async (req, res) => {
     };
 
     // get reporter username
-    let reporter_username = Student.findOne({
+    let reporter_username = await Student.findOne({
         where: {
             gid: bug_info.reporter_gid
         },
@@ -778,7 +778,7 @@ const GetOneBug = async (req, res) => {
     reporter_username = reporter_username.dataValues.username;
 
     // get fixer username if fixer exists
-    let fixer_username = Student.findOne({
+    let fixer_username = await Student.findOne({
         where: {
             gid: bug_info.fixer_gid
         },
@@ -822,6 +822,8 @@ const GetOneBug = async (req, res) => {
 // if USER is member of team of project -> {description, status, solution_link}
 //              if solution_link is modified we assume that the user who sends the PATCH request 
 const EditOneBug = async (req, res) => {
+    // get form
+    let form = req.body;
     // get project_id
     let project_id = req.params.project_id;
     // get id
@@ -890,7 +892,7 @@ const EditOneBug = async (req, res) => {
         //              if solution_link is modified we assume that the user who sends the PATCH request
         
         // check if solution_link is the same
-        if (solution_link == form.solution_link) {
+        if (form.solution_link != form.solution_link) {
             // fixer is the same
             updated_bug_json = {
                 description: form.description,
@@ -901,7 +903,7 @@ const EditOneBug = async (req, res) => {
             updated_bug_json = {
                 description: form.description,
                 status: form.state,
-                fixer_gid: reporter_gid
+                fixer_gid: requester_gid
             };
         }
     } else {

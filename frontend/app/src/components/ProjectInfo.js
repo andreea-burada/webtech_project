@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import "../App.css";
-import "./ViewTeams.css";
+import "./ProjectInfo.css";
 axios.defaults.withCredentials = true;
 
 var currentProject = {};
@@ -128,11 +128,14 @@ const ProjectInfo = () => {
         <h3 className="description">{currentProject.description}</h3>
         <div className="bugs-container">
           {currentProject.bugs.map((bug) => {
+            let where = "/project/" + currentProject.id + "/bug/" + bug.id;
             return (
               <div className="bug-container" key={bug.id}>
+                <Link to={where}>
                 <h3 className="bug-name">
                   <strong>{bug.name}</strong>
                 </h3>
+                </Link>
                 <h4 className="reporter">Reporter: {bug.reporter}</h4>
                 <h4 className="fixer">Solver: {bug.solver}</h4>
                 <h5 className="state">{bug.state}</h5>
