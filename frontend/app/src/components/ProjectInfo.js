@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 // import './ViewTeams.css'
 import "../App.css";
-import "./Teams.css";
+import "./ProjectInfo.css";
 axios.defaults.withCredentials = true;
 
 var currentProject = {};
@@ -84,19 +84,19 @@ const ProjectInfo = () => {
           <strong>{currentProject.name}</strong>
         </h2>
         <h3 className="owner">Owner: {currentProject.owner}</h3>
-        <h3 className="repo_link">{currentProject.repo_link}</h3>
-        <h3 className="description">{currentProject.description}</h3>
+        <h3 className="repo_link">Repo: {currentProject.repo_link}</h3>
+        <h3 className="description">Description: {currentProject.description}</h3>
         <div className="bugs-container">
           {currentProject.bugs.map((bug) => {
             return (
               <div className="bug-container" key={bug.id}>
                 <h3 className="bug-name">
-                  <strong>{bug.name}</strong>
+                  <strong>Name: {bug.name}</strong>
                 </h3>
-                <h4 className="reporter">{bug.reporter}</h4>
-                <h4 className="fixer">{bug.fixer}</h4>
-                <h5 className="state">{bug.state}</h5>
-                <h3 className="severity">{bug.severity}</h3>
+                <h4 className="reporter">Reporter: {bug.reporter}</h4>
+                <h4 className="fixer">Fixer: {bug.fixer}</h4>
+                <h5 className="state">State: {bug.state}</h5>
+                <h3 className="severity">Severity: {bug.severity}</h3>
                 <div className="assign-button-container">{assignButton}</div>
               </div>
             );

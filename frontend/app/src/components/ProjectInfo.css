@@ -1,0 +1,80 @@
+@import './ColorTheme.css';
+
+.project-container {
+    padding: 10px 10px;
+    margin: 20px 400px;
+    border-radius: 8px;
+    border-bottom: 1px solid #0e0e10;
+    background-color:#2a2e36;
+    border: 0.05px solid #3b3b42;
+    -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    overflow: hidden;
+    color:var(--primary);
+    line-height: 30px;
+    box-shadow: 1px 1px 16px var(--purple-sixth);
+}
+
+.project-details-container{
+    font-size:20px;
+}
+
+.bugs-container{
+    line-height: 40px;
+    font-size:20px;
+}
+
+.project-details-container > .project-name,
+.project-details-container> .owner, 
+.project-details-container > .repo_link,
+.project-details-container > .description, 
+.project-details-container > .bugs-container
+{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.add-bug-button{
+    box-shadow: 8px 5px 5px #0e0e10;
+    border-style: none;
+    background-color: var(--purple-third);
+    padding-left: 11px;
+    padding-right: 11px;
+    border-radius:5px;
+    font-size:16px;
+    color:var(--primary);
+}
+
+.add-bug-button:hover{
+    background-color: var(--primary);
+    color: var(--background-dark-color);
+    transition: all 0.15s ease-out;
+}
+
+.assign-button{
+    box-shadow: 8px 5px 5px #0e0e10;
+    border-style: none;
+    background-color: var(--mint-main);
+    padding-left: 11px;
+    padding-right: 11px;
+    border-radius:5px;
+    font-size:16px;
+}
+
+.assign-button:hover{
+    background-color: var(--primary);
+    color: var(--background-dark-color);
+    transition: all 0.15s ease-out;
+}
+
+.project-name{
+    color:var(--purple-third);
+    font-size:30px;
+}
+
+
+
+
+
