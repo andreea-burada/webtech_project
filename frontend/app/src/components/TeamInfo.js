@@ -62,13 +62,13 @@ function TeamInfo() {
       button = <button className="leave-button" onClick={handleTeamLeave}>Leave</button>
       let where = "/team/" + currentTeam.id + "/add";
       buttonAddProject = (
-        <><Link to={where}><button className="add-project">Add Project</button></Link></>
+        <><div className="add-project-container"><Link to={where}><button className="add-project">Add Project</button></Link></div></>
       );
     } else if (currentTeam.joined == 2) {
       button = <button className="owned-button">OWNED</button>
       let where = "/team/" + currentTeam.id + "/add";
       buttonAddProject = (
-        <><Link to={where}><button className="add-project">Add Project</button></Link></>
+        <><div className="add-project-container"><Link to={where}><button className="add-project">Add Project</button></Link></div></>
       );
     }
 
@@ -107,9 +107,12 @@ function TeamInfo() {
                 </div>
               )
             })}
-            {buttonAddProject}
+            
           </div>
           {button}
+        </div>
+        <div className="join-leave-container">
+          {buttonAddProject}
         </div>
       </div>
   

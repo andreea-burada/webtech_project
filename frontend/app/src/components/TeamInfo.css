@@ -18,6 +18,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background-color:#1f2127;
+    min-width: 80%;
+    min-height: 80%;
 }
 
 .members-container::-webkit-scrollbar{
@@ -55,6 +57,9 @@
     transform: translate(-50%, -50%);
     color: var(--primary);
     line-height: 30px;
+    max-height: 400px;
+    overflow-y: auto;
+    scrollbar-width: none;  /* Firefox */
 }
 
 .soft-proj-container>.soft-title {
@@ -67,6 +72,7 @@
 
 .team-details-container{
     padding-left:10px;
+    margin-bottom: 130px;
 
 }
 
@@ -83,18 +89,19 @@
     border: none;
     position: fixed;
     top: 60%;
-    left: 80%;
+    left: 90%;
     transform: translate(-50%, -50%);
     width: 60%;
     height: 350px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center;
+    align-items: center; */
     overflow-y: scroll;
     max-height: 400px;
     font-size: 20px;
     color: var(--primary);
+    scrollbar-width: none;  /* Firefox */
 }
 
 .join-button,
@@ -117,8 +124,7 @@
     box-shadow: 8px 5px 5px #0e0e10;
     border-style: none;
     border-radius: 3px;
-    padding-left: 11px;
-    padding-right: 11px;
+    padding: 10px 20px;
     color:white;
 }
 
@@ -131,7 +137,15 @@
 
 .join-button {
     background-color: var(--mint-main);
-
+    position: fixed;
+    top: -30%;
+    right: 5%;
+    padding: 10px 25px;
+    border-radius: 5px;
+    background-color: #62BAAC;
+    box-shadow: 8px 5px 5px #0e0e10;
+    border-style: none;
+    font-size:22px;
 }
 
 .join-button:hover {
@@ -143,6 +157,15 @@
 .leave-button {
     background-color: var(--burgundiu);
     color:var(--primary);
+    position: fixed;
+    top: -30%;
+    right: 5%;
+    padding: 10px 25px;
+    border-radius: 5px;
+    background-color: #9e0c0c;
+    box-shadow: 8px 5px 5px #0e0e10;
+    border-style: none;
+    font-size:22px;
 
 }
 
@@ -187,7 +210,17 @@
     color: black;
 }
 
+div.soft-proj-container {
+    width: 85% !important;
+}
 
+.add-project-container {
+    position: absolute;
+    z-index: 999;
+    left: 3%;
+    top: 90%;
+    font-size: 15px;
+}
 
 buttons {
     width: 80%;
