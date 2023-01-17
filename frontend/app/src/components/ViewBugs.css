@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@500&family=Open+Sans:ital,wght@1,300&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    /* font-family: 'Lora', serif; */
+    font-family: 'Open Sans', sans-serif;
+    
+   
+}
+
+.viewBugsContainer{
+    display: flex;
+    gap:20px;
+    justify-content: center;
+    background-color: #9e86b6;
+}
+
+.onebug{
+    background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgba(138,91,171,255) 100%);
+    box-shadow: 2px 2px 2px rgb(48, 26, 26);
+    text-align: center;
+    margin:10px;
+    min-width: 770px;
+    max-height: 300px;
+    width: 50%;
+}
+
+.bugContainer-left{
+    margin:20px;
+    float: left;
+    padding:4px;
+    background-color: rgba(138,91,171,255);
+    width: 800px;
+    height: 680px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align:justify;
+}
+
+.bugContainer-right{
+    margin:20px;
+    padding:4px;
+    float:right;
+    /* background-color: rgba(138,91,171,255); */
+    background: linear-gradient(90deg, #755a89 0%, #8a5bab 100%);
+    width: 700px;
+    height: 620px;
+    text-align: center;
+    vertical-align: middle;
+    /* position: -webkit-sticky;
+    position: sticky;
+    display: flex;
+    flex-wrap: wrap;  */
+}
+
+.bugContainer-right h1{
+    line-height: normal;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0px 10px; 
+    
+}
+
+.bugContainer-right h2{
+    line-height: normal;
+    vertical-align: middle;
+    margin: 0px 30px; 
+    font-size: 25px; 
+}
+
+.bugContainer-right h3{
+    line-height: normal;
+    vertical-align: middle;
+    margin: 0px 30px; 
+    font-size: 20px; 
+}
+
+.leftsidebug{
+    float: left;
+}
+
+.title{
+    color:azure;
+    font:'PT Sans'
+}
+
+.severity{
+    color:azure
+}
+
+.state{
+    color:azure;
+       
+}
+
+.left{
+    margin-top: 40px;
+    float: left;
+}
+
+.right{
+    margin-top: 40px;
+    float:right
+}
+
+.boxb{
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.box{
+    margin-left: 20px;
+    margin-top: 10px; 
+    text-align:left;
+}
+
+.middle{
+    margin-top: 65px;
+    
+}
+
+.btn--primary {
+    background: linear-gradient(90deg, #755a89 0%, #8a5bab 100%);
+    /* background-color: rgb(163, 131, 131); */
+    color: rgb(9, 5, 5);
+    border: 1px solid var(--primary);
+    /* margin-left: 310px; */
+}
+
+.buttonBox{
+    margin-left: 310px;
+}

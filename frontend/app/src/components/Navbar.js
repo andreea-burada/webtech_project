@@ -96,6 +96,9 @@ function Navbar() {
                   Teams
                 </Link>
               </li>
+              <li className='nav-item'>
+                <Link to='/viewBugs' className='nav-links' onClick={closeMobileMenu}>Bugs</Link>
+              </li>
               <li className="nav-item nav-username">
                 <span className="nav-links">{localStorage.username}</span>
               </li>
