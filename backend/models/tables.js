@@ -19,9 +19,9 @@ const setupDB = async () => {
         await Bug.sync();
     };
 
-    await createTables();
+    //await createTables();
 
-    require('../../db_setup/populate_db');
+    //require('../../db_setup/populate_db');
 }
 
 module.exports = {

@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
-import Team from './teamInfo.json'
-// import './ViewTeams.css'
 import '../App.css'
-import './Teams.css'
-axios.defaults.withCredentials = true;
+import './ViewTeams.css'
 
 var currentTeam = {};
 
@@ -57,12 +55,21 @@ function TeamInfo() {
     }
 
     let button = null;
+    let buttonAddProject = null;
     if (currentTeam.joined == 0) {
       button = <button className="join-button" onClick={handleTeamJoin}>Join</button>
     } else if (currentTeam.joined == 1) {
       button = <button className="leave-button" onClick={handleTeamLeave}>Leave</button>
+      let where = "/team/" + currentTeam.id + "/add";
+      buttonAddProject = (
+        <><Link to={where}><button className="add-project">Add Project</button></Link></>
+      );
     } else if (currentTeam.joined == 2) {
       button = <button className="owned-button">OWNED</button>
+      let where = "/team/" + currentTeam.id + "/add";
+      buttonAddProject = (
+        <><Link to={where}><button className="add-project">Add Project</button></Link></>
+      );
     }
 
     return (
@@ -76,11 +83,11 @@ function TeamInfo() {
                 {currentTeam.projects.map((project) => {
                     return (<div className="project-container" key={project.id}>
                         <h3 className="project-name"><strong>{project.name}</strong></h3>
-                        <h4 className="admin">{project.admin}</h4>
+                        <h4 className="admin">{project.owner}</h4>
                         <a href={"/team/" + currentTeam.id + "/project/" + project.id}>
-                          {(localStorage.username==project.admin) && 
+                          {(localStorage.username==project.owner) && 
                             <button>Owned</button>}
-                          {!(localStorage.username==project.admin) &&  
+                          {!(localStorage.username==project.owner) &&  
                             <button>View</button>}
                         </a>
                     </div>)
@@ -96,7 +103,7 @@ function TeamInfo() {
                     </div>
                     )
                 })}
-                
+                {buttonAddProject}
                 </div>
                 {button}
             </div>
