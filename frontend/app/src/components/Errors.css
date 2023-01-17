@@ -13,3 +13,7 @@
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.411);
     
   }
+.form-input-error {
+    color: red;
+    margin-left: 1vh;
+}

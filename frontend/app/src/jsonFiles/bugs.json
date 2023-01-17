@@ -1,0 +1,126 @@
+[
+    {
+        "id":1,
+        "title":"App crashes",
+        "severity":"MINOR",
+        "state":"In progress",
+        "solver":"monica",
+        "description":"descr1",
+        "project":"webtech",
+        "reporter":"andreea"
+    },
+    {
+        "id":2,
+        "title":"App crashes2",
+        "state":"Solved",
+        "severity":"SERIOUS",
+        "description":"descr2",
+        "solver":"andreea",
+        "project":"webtech",
+        "reporter":"andreea"
+       
+    },
+    {
+        "id":3,
+        "title":"App crashes3",
+        "state":"Unassigned",
+        "description":"descr3",
+        "severity":"SEVER",
+        "solver":"cata",
+        "project":"webtech",
+        "reporter":"andreea"
+    },
+    {
+        "id":4,
+        "title":"App crashes",
+        "severity":"MINOR",
+        "state":"In progress",
+        "solver":"monica",
+        "description":"descr1",
+        "project":"webtech",
+        "reporter":"andreea"
+    },
+    {
+        "id":5,
+        "title":"App crashes2",
+        "state":"Solved",
+        "severity":"SERIOUS",
+        "description":"descr2",
+        "solver":"andreea",
+        "project":"webtech",
+        "reporter":"andreea"
+       
+    },
+    {
+        "id":6,
+        "title":"App crashes3",
+        "state":"Unassigned",
+        "description":"descr3",
+        "severity":"SEVER",
+        "solver":"cata",
+        "project":"webtech",
+        "reporter":"andreea"
+    },
+    {
+        "id":7,
+        "title":"App crashes",
+        "severity":"MINOR",
+        "state":"In progress",
+        "solver":"monica",
+        "description":"descr1",
+        "project":"webtech",
+        "reporter":"andreea"
+    },
+    {
+        "id":8,
+        "title":"App crashes2",
+        "state":"Solved",
+        "severity":"SERIOUS",
+        "description":"descr2",
+        "solver":"andreea",
+        "project":"webtech",
+        "reporter":"andreea"
+       
+    },
+    {
+        "id":9,
+        "title":"App crashes3",
+        "state":"Unassigned",
+        "description":"descr3",
+        "severity":"SEVER",
+        "solver":"cata",
+        "project":"webtech",
+        "reporter":"andreea"
+    },
+    {
+        "id":10,
+        "title":"App crashes",
+        "severity":"MINOR",
+        "state":"In progress",
+        "solver":"monica",
+        "description":"descr1",
+        "project":"webtech",
+        "reporter":"andreea"
+    },
+    {
+        "id":11,
+        "title":"App crashes2",
+        "state":"Solved",
+        "severity":"SERIOUS",
+        "description":"descr2",
+        "solver":"andreea",
+        "project":"webtech",
+        "reporter":"andreea"
+       
+    },
+    {
+        "id":12,
+        "title":"App crashes3",
+        "state":"Unassigned",
+        "description":"descr3",
+        "severity":"SEVER",
+        "solver":"cata",
+        "project":"webtech",
+        "reporter":"andreea"
+    }
+]

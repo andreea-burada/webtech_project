@@ -82,7 +82,7 @@ function ViewTeam() {
         <input className="search-bar" id="search-bar" placeholder='Search team name...' onKeyDown={handleSearchEnter}></input>
         <button className='search-button' onClick={handleSearch}><FaSearch id="search-icon" /></button>
       </div>
-      <div className="button-container"><button>Add Team</button></div>
+      <div className="button-container"><Link to="/team/add"><button>Add Team</button></Link></div>
       {
         teams.map(team => {
           let button = null;

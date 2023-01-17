@@ -7,6 +7,7 @@ const { Team } = require("../models/team");
 const { Team_Member } = require("../models/team_member");
 const { Software_Project } = require("../models/software_project");
 const { Bug } = require("../models/bug");
+const { sequelize } = require('../models/db');
 
 
 // /api/user
@@ -43,7 +44,7 @@ const GetAllTeams = async (req, res) => {
         //         order: [[ 'id', 'ASC' ]]
         //     });
         teams = await Team.findAll({
-                where: Sequelize.where(Sequelize.fn('lower', Sequelize.col('name')), query),
+                where: Sequelize.where(Sequelize.fn('lower', Sequelize.col('name')), { [Op.like]: query }),
                 order: [[ 'id', 'ASC' ]]
             });
         
@@ -327,7 +328,7 @@ const AddOneTeam = async (req, res) => {
             await team_admin.save();
 
             console.log("New team added.");
-            res.status(200);
+            res.status(200).json({message: "OK"});
         }
         
     }
@@ -454,11 +455,11 @@ const TeamLeave = async (req, res) => {
     }
 };
 
-// /api/team/:id/project/add - POST
+// /api/team/:team_id/project/add - POST
 const AddOneProject = async (req, res) => {
     
     // get the team id
-    let team_id = req.params.id;
+    let team_id = req.params.team_id;
 
     // get current user gid
     let username = "zeceLaWeb";
@@ -609,7 +610,7 @@ const GetOneProject = async (req, res) => {
         // get solver username if it exists
         let solver_username = '';
         if (bug_info.fixer_gid) {
-            solver_username = Student.findOne({
+            solver_username = await Student.findOne({
                 attributes: [ 'username' ],
                 where: {
                     gid: bug_info.fixer_gid
@@ -648,6 +649,395 @@ const GetOneProject = async (req, res) => {
     res.status(200).json(project_json)
 };
 
+// /api/:project_id/bug/add - POST
+const AddOneBug = async(req, res) => {
+    // get project id
+    let project_id = req.params.project_id;
+    // get form
+    let form = req.body;
+    // get reporter GID
+    let username = "zeceLaWeb";
+    if (req.session.user) {
+        username = req.session.user.username;
+    }
+    // get GID from username
+    let reporter_gid = await Student.findOne({
+        where: {
+            username: username
+        },
+        attributes: [ 'gid' ]
+    });
+    reporter_gid = reporter_gid.dataValues.gid;
+    // codify severity
+    let severity = 0;
+    if (form.severity == "SERIOUS") {
+        severity = 1;
+    } else if (form.severity == "MINOR") {
+        severity = 2;
+    }
+    // link
+    // verify if the link is a valid url
+    try {
+        let dummy = new URL(form.link);
+        // <- if here, link is good
+        let status = "NOT SOLVED";
+        let bug_json = {
+            software_project_id: project_id,
+            name: form.name,
+            severity: severity,
+            reporter_gid: reporter_gid,
+            link: form.link,
+            description: form.description,
+            status: status,
+            fixer_gid: null,
+            solution_link: null
+        }
+        let bug = new Bug(bug_json);
+        bug.save();
+        return res.sendStatus(200);
+
+    } catch (error) {
+        return res.status(404).json({error: "URL provided for Bug link is not a valid URL."});
+    }
+
+};
+
+// /api/:project_id/bug/:id - GET
+const GetOneBug = async (req, res) => {
+    // get project_id
+    let project_id = req.params.project_id;
+    // get bug id
+    let id = req.params.id;
+
+    let bug_json = {};
+    // get info
+    let bug_info = await Bug.findOne({
+        where: {
+            id: id
+        }
+    });
+    bug_info = bug_info.dataValues;
+
+    // get requester GID
+    let username = "zeceLaWeb";
+    if (req.session.user) {
+        username = req.session.user.username;
+    }
+    // get GID from username
+    let requester_gid = await Student.findOne({
+        where: {
+            username: username
+        },
+        attributes: [ 'gid' ]
+    });
+    requester_gid = requester_gid.dataValues.gid;
+
+    // get project information
+    let project_info = await Software_Project.findOne({
+        where: {
+            id: project_id
+        }
+    });
+    project_info = project_info.dataValues;
+
+    // get team id of project where the bug belongs to
+    let team_id = await Team_Member.findOne({
+        where: {
+            id: project_info.owner_id
+        },
+        attributes: [ 'team_id' ]
+    });
+    team_id = team_id.dataValues.team_id;
+
+    // check if user is tester or not
+    let tester = true;
+    tester = await Team_Member.findOne({
+        attributes: [ 'is_admin' ],
+        include: {
+            model: Team,
+            required: true
+        },
+        where: {
+            team_id: team_id,
+            member_gid: requester_gid
+        }
+    });
+    if (tester) {
+        tester = false;
+    } else {
+        tester = true;
+    };
+
+    // get reporter username
+    let reporter_username = await Student.findOne({
+        where: {
+            gid: bug_info.reporter_gid
+        },
+        attributes: [ 'username' ]
+    });
+    reporter_username = reporter_username.dataValues.username;
+
+    // get fixer username if fixer exists
+    let fixer_username = await Student.findOne({
+        where: {
+            gid: bug_info.fixer_gid
+        },
+        attributes: [ 'username' ]
+    });
+    if (fixer_username) {
+        fixer_username = fixer_username.dataValues.username;
+    } else {
+        fixer_username = '';
+    }
+
+    let severity = '';
+    if (bug_info.severity == 0) {
+        severity = 'SEVERE';
+    } else if (bug_info.severity == 1) {
+        severity = 'SERIOUS';
+    } else if (bug_info.severity == 2) {
+        severity = 'MINOR';
+    }
+
+    bug_json = {
+        id: id,
+        project_id: project_id,
+        team_id: team_id,
+        name: bug_info.name,
+        description: bug_info.description,
+        link: bug_info.link,
+        reporter: reporter_username,
+        tester: tester,
+        severity: severity,
+        state: bug_info.status,
+        solution_link: bug_info.solution_link,
+        solver: fixer_username
+    };
+
+    return res.status(200).json(bug_json);
+};
+
+// /api/:project_id/bug/:id - PATCH
+// it treats two different cases
+// if USER is tester -> {name, description, link, severity} will be modified
+// if USER is member of team of project -> {description, status, solution_link}
+//              if solution_link is modified we assume that the user who sends the PATCH request 
+const EditOneBug = async (req, res) => {
+    // get form
+    let form = req.body;
+    // get project_id
+    let project_id = req.params.project_id;
+    // get id
+    let id = req.params.id;
+    // get bug information from the table
+    let bug_info = await Bug.findOne({
+        where: {
+            id: id
+        }
+    });
+    let bug_json = bug_info.dataValues;
+
+    // get requester GID
+    let username = "zeceLaWeb";
+    if (req.session.user) {
+        username = req.session.user.username;
+    }
+    // get GID from username
+    let requester_gid = await Student.findOne({
+        where: {
+            username: username
+        },
+        attributes: [ 'gid' ]
+    });
+    requester_gid = requester_gid.dataValues.gid;
+
+    // get project information
+    let project_info = await Software_Project.findOne({
+        where: {
+            id: project_id
+        }
+    });
+    project_info = project_info.dataValues;
+
+    // get team id of project where the bug belongs to
+    let team_id = await Team_Member.findOne({
+        where: {
+            id: project_info.owner_id
+        },
+        attributes: [ 'team_id' ]
+    });
+    team_id = team_id.dataValues.team_id;
+
+    // check if user is tester or not
+    let tester = true;
+    tester = await Team_Member.findOne({
+        attributes: [ 'is_admin' ],
+        include: {
+            model: Team,
+            required: true
+        },
+        where: {
+            team_id: team_id,
+            member_gid: requester_gid
+        }
+    });
+    if (tester) {
+        tester = false;
+    } else {
+        tester = true;
+    };
+
+    let updated_bug_json = {};
+    if (tester == false) {
+        // if USER is member of team of project -> {description, status, solution_link}
+        //              if solution_link is modified we assume that the user who sends the PATCH request
+        
+        // check if solution_link is the same
+        if (bug_json.solution_link == form.solution_link) {
+            // fixer is the same
+            updated_bug_json = {
+                description: form.description,
+                status: form.state
+            };
+        } else {
+            // fixer is the requester
+            updated_bug_json = {
+                description: form.description,
+                status: form.state,
+                fixer_gid: requester_gid,
+                solution_link: form.solution_link
+            };
+        }
+    } else {
+        // if USER is tester -> {name, description, link, severity} will be modified
+        let severity = 0;
+        if (form.severity == "SERIOUS") {
+            severity = 1;
+        } else if (form.severity == "MINOR") {
+            severity = 2;
+        }
+        updated_bug_json = {
+            name: form.name,
+            description: form.description,
+            link: form.link,
+            severity: severity
+        };
+    }
+    await Bug.update(updated_bug_json, {
+        where: {
+            id: id
+        }
+    });
+
+    return res.sendStatus(200);
+};
+
+// /api/:project_id/bug/:id/assign - POST
+const AssignBug = async (req, res) => {
+    // get project id - might not need it but just in case
+    let project_id = req.params.project_id;
+    // get id of bug
+    let id = req.params.id;
+
+    // get requester username
+    let username = "zeceLaWeb";
+    if (req.session.user) {
+        username = req.session.user.username;
+    }
+    // get GID from username
+    let requester_gid = await Student.findOne({
+        where: {
+            username: username
+        },
+        attributes: [ 'gid' ]
+    });
+    requester_gid = requester_gid.dataValues.gid;
+
+    await Bug.update({fixer_gid: requester_gid},
+        { where: {
+            id: id
+        }});
+
+    return res.sendStatus(200);
+};
+
+// /api/:project_id/bug/:id/assign - DELETE
+const UnassignBug = async (req, res) => {
+    // get project id - might not need it but just in case
+    let project_id = req.params.project_id;
+    // get id of bug
+    let id = req.params.id;
+
+    // get requester username
+    let username = "zeceLaWeb";
+    if (req.session.user) {
+        username = req.session.user.username;
+    }
+    // get GID of requester
+    let requester_gid = await Student.findOne({
+        where: {
+            username: username
+        },
+        attributes: [ 'gid' ]
+    });
+    requester_gid = requester_gid.dataValues.gid;
+
+    // get bug
+    let bug = Bug.findOne({
+        where: {
+            id: id
+        }
+    });
+
+    await Bug.update({
+        fixer_gid: null,
+        solution_link: null,
+    },{
+        where: {
+            id: id
+        }
+    });
+
+    return res.sendStatus(200);
+};
+
+// /api/:project_id/bug/:id/status - PATCH
+const UpdateStatus = async (req, res) => {
+    // get project id - might not need it but just in case
+    let project_id = req.params.project_id;
+    // get id of bug
+    let id = req.params.id;
+
+    // get new status
+    let status = req.body.state;
+
+    // get bug
+    let bug = Bug.findOne({
+        where: {
+            id: id
+        }
+    });
+
+    await bug.update({
+        status: status
+    });
+
+    return res.sendStatus(200);
+};
+
 module.exports = {
-    GetSessionUser, GetAllTeams, GetOneTeam, AddOneTeam, TeamJoin, TeamLeave, AddOneProject, GetOneProject
+    GetSessionUser, 
+    GetAllTeams, 
+    GetOneTeam, 
+    AddOneTeam, 
+    TeamJoin, 
+    TeamLeave, 
+    AddOneProject, 
+    GetOneProject, 
+    AddOneBug,
+    GetOneBug, 
+    EditOneBug, 
+    AssignBug, 
+    UnassignBug, 
+    UpdateStatus
 }

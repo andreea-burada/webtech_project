@@ -9,6 +9,12 @@ import FormSignUp from "./components/FormSignup";
 import ViewTeams from "./components/ViewTeams";
 import TeamInfo from "./components/TeamInfo";
 import ProjectInfo from "./components/ProjectInfo";
+import AddTeam from "./components/AddTeam";
+import ViewBugs from './components/ViewBugs';
+import AddBug from './components/AddBug';
+import AddProject from './components/AddProject';
+import EditBug from './components/EditBug';
+import BugInfo from "./components/BugInfo";
 
 function App() {
   // sync username with backend
@@ -44,6 +50,11 @@ function App() {
           <Route path="/view-teams" exact component={ViewTeams} />
           <Route path="/view-team/:id" exact component={TeamInfo} />
           <Route path="/team/:team_id/project/:id" exact component={ProjectInfo} />
+          <Route path="/team/add" exact component={AddTeam}/>
+          <Route path='/bug/all' exact component={ViewBugs}/>
+          <Route path='/project/:project_id/bug/add' exact component={AddBug}/>
+          <Route path='/team/:team_id/add' exact component={AddProject}/>
+          <Route path='/project/:project_id/bug/:id' exact component={EditBug}/>  
         </Switch>
       </Router>
     );
@@ -59,6 +70,11 @@ function App() {
         <Route path="/view-teams" exact component={ViewTeams} />
         <Route path="/view-team/:id" exact component={TeamInfo} />
         <Route path="/team/:team_id/project/:id" exact component={ProjectInfo} />
+        <Route path="/team/add" exact component={AddTeam}/>
+        <Route path='/bug/all' exact component={ViewBugs}/>
+        <Route path='/project/:project_id/bug/add' exact component={AddBug}/>
+        <Route path='/team/:team_id/add' exact component={AddProject}/>
+        <Route path='/project/:project_id/bug/:id' exact component={EditBug}/>
       </Switch>
     </Router>
   );
