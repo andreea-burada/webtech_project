@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 // import './ViewTeams.css'
 import "../App.css";
-import "./Teams.css";
+import "./ViewTeams.css";
 axios.defaults.withCredentials = true;
 
 var currentProject = {};
