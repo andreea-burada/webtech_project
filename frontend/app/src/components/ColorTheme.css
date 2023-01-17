@@ -1,7 +1,16 @@
 :root {
-    --primary: #fff;
+    --primary: #EEEEF0;
     --purple-light: rgb(186, 157, 255);
     --purple-dark: rgb(64, 8, 113);
-    --purple-main:#5C00B8;
+    --purple-main:#4a00b8;
+    --purple-second:#781FFF;
+    --purple-third:#6F29E0;
+    --purple-fourth:#31007A;
+    --purple-fifth:#210052;
+    --purple-sixth:#020333;
+    --mint-main:#62BAAC;
+    --mint-accent:#25A792;
     --background-dark-color:#1a1c21;
+    --burgundiu:#641b24d2;
+    --another-red:#b63b4ad2;
 }

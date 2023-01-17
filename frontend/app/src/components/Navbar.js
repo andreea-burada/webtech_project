@@ -39,7 +39,7 @@ function Navbar() {
           <div className="navbar-container">
             {/* link replaces the a tag */}
             <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-              Powerpuff&nbsp; <VscDebugConsole/>
+              Powerpuff <VscDebugConsole id="logo"/>
             </Link>
             <div className="menu-icon" onClick={handleClick}>
               <i className={click ? "fas fa-times" : "fas fa-bars"} />
@@ -80,7 +80,7 @@ function Navbar() {
           <div className="navbar-container">
             {/* link replaces the a tag */}
             <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-              Powerpuff&nbsp;<VscDebugConsole/>
+              Powerpuff<VscDebugConsole id="logo"/>
             </Link>
             <div className="menu-icon" onClick={handleClick}>
               <i className={click ? "fas fa-times" : "fas fa-bars"} />

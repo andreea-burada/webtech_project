@@ -20,7 +20,7 @@
 }
 
 .navbar-logo {
-  color: #fff;
+  color: #EEEEF0;
   justify-self: start;
   margin-left: 20px;
   cursor: pointer;
@@ -32,6 +32,10 @@
 
 .navbar-logo:hover{
   color: #62BAAC;
+}
+
+.navbar-logo:hover>#logo{
+  color:#EEEEF0 ;
 }
 
 .fa-typo3 {
@@ -55,7 +59,7 @@
 }
 
 li.nav-username {
-  background-color: rgb(46, 44, 61);
+  background-color:#1a1c21;
   padding: 0.5rem 1rem;
   border-radius: 5px;
 }
@@ -72,7 +76,7 @@ li.nav-username:hover span {
 }
 
 .nav-links {
-  color: #fff; 
+  color: #EEEEF0; 
   display: flex;
   align-items: center;
   text-decoration: none;

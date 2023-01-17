@@ -13,7 +13,6 @@ const FormSignup = ({ submitForm }) => {
   return (
     <div className='form-content-right'>
       <form onSubmit={handleLoginSubmit} className='form' noValidate>
-      <h1>Log in</h1>
 
         <div className='form-inputs'>
           <label className='form-label'>Username</label>
@@ -45,9 +44,9 @@ const FormSignup = ({ submitForm }) => {
           Sign in
         </button>
         <span className='form-input-login'>
-        <div className='footer-link-wrapper'>
-            <div class='footer-link-items'>
-            <h3>Don't have an account? </h3>
+        <div className='form-input-login'>
+            <div class='form-input-login' id="sign-up-again">
+            <span>Don't have an account? </span>
              <Link to='/sign-up'>Sign up</Link>
          </div>
          </div>
