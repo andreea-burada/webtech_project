@@ -6,6 +6,10 @@
 }
 
 * body {
+  background-color: #1a1c21 !important; 
+}
+
+#root {
   background-color: #1a1c21;
 }
 

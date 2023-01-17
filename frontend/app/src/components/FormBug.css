@@ -1,3 +1,4 @@
+@import "./ColorTheme.css";
 .form-content{
     width:1600px;
     background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgba(138,91,171,255) 100%);
