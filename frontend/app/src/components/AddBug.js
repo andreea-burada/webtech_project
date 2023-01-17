@@ -7,6 +7,7 @@ import useForm from './formHandlers/addBugHandler';
 import validateInfo from './formHandlers/addBugValidate';
 import '../components/FormBug.css';
 
+
 function AddBug() {
     const [isSubmitted, setIsSubmitted] = useState(false);
     function submitForm() {

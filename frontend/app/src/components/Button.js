@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import './Button.css';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 axios.defaults.withCredentials = true;
 
@@ -77,12 +77,13 @@ export const SignupButton = ({ children, type, onClick, buttonStyle, buttonSize 
     )
 }
 
-export const LogoutButton = ({ children, type, onClick, buttonStyle, buttonSize }) => {
+
+export const LogoutButton=({children,type,onClick,buttonStyle,buttonSize})=>{
     const [modalShow, setModalShow] = React.useState(false);
+    
+    const checkButtonStyle=STYLES[1];
 
-    const checkButtonStyle = STYLES[1];
-
-    const checkButtonSize = SIZES[0];
+    const checkButtonSize=SIZES[0];
 
     const handleLogout = async () => {
         try {
