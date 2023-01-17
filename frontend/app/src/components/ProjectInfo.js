@@ -13,31 +13,66 @@ const ProjectInfo = () => {
   let url = window.location.href.split('/', 10);
   var id = url[6];
   var team_id = url[4];
-  
-  
+  let bug_id = 0;
 
   const [project, setProject] = useState({});
   const [isLoading, setLoading] = useState(true);
+  const [isAssigning, setAssigning] = useState(false);
+  const [isUnassigning, setUnassigning] = useState(false);
 
-  // const handleTeamJoin = () => {
-  //   axios.patch("http://localhost:8080/api/team/" + currentTeam.id, { withCredentials: true })
-  //     .then((response) => {
-  //       window.location.reload();
-  //     })
-  //     .catch((error) => {
-  //       console.log("error", error.response.data);
-  //     });
-  // };
+  const handleAssign = (event) => {
+    setAssigning(true);
+    bug_id = event.target.parentNode.id;
+  }
 
-  // const handleTeamLeave = () => {
-  //   axios.delete("http://localhost:8080/api/team/" + currentTeam.id, { withCredentials: true })
-  //     .then((response) => {
-  //       window.location.reload();
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // };
+  useEffect(() => {
+    // make call to assign current logged in user as fixer
+    if (isAssigning == true) {
+      try {
+        axios
+          .post("http://localhost:8080/api/" + currentProject.id +  "/bug/" + id + "/assign", {
+            withCredentials: true,
+          })
+          .then((response) => {
+            console.log(response.data);
+            setAssigning(false);
+            window.location.reload();
+          });
+      } catch (error) {
+        console.log("error", error.response.data);
+      }
+    }
+    else {
+      console.log("no");
+    }
+  }, [isAssigning]);
+
+  const handleUnassign = (event) => {
+    setUnassigning(true);
+    bug_id = event.target.parentNode.id;
+  }
+
+  useEffect(() => {
+    // make call to remove any fixer that is currently assigned
+    if (isUnassigning == true) {
+      try {
+        axios
+          .delete("http://localhost:8080/api/" + currentProject.id +  "/bug/" + id + "/assign", {
+            withCredentials: true,
+          })
+          .then((response) => {
+            console.log(response.data);
+            setUnassigning(false);
+            window.location.reload();
+          });
+      } catch (error) {
+        console.log("error", error.response.data);
+      }
+    }
+    else {
+      console.log("no");
+    }
+  }, [isUnassigning]);
 
   useEffect(() => {
     try {
@@ -64,10 +99,12 @@ const ProjectInfo = () => {
   let assignButton = null;
   if (currentProject.can_assign == false) {
     assignButton = (
-      <button className="assign-button disabled">Assign (disabled)</button>
+      <><button className="assign-button disabled">Assign (disabled)</button><button className="unassign-button disabled">Unassign (disabled)</button></>
     );
   } else {
-    assignButton = <button className="assign-button">Assign</button>;
+    assignButton = ( 
+    <><button className="assign-button" onClick={handleAssign}>Assign</button><button className="unassign-button" onClick={handleUnassign}>Unassign</button></>
+    );
   }
 
   let reportButton = null;
@@ -93,11 +130,11 @@ const ProjectInfo = () => {
                 <h3 className="bug-name">
                   <strong>{bug.name}</strong>
                 </h3>
-                <h4 className="reporter">{bug.reporter}</h4>
-                <h4 className="fixer">{bug.fixer}</h4>
+                <h4 className="reporter">Reporter: {bug.reporter}</h4>
+                <h4 className="fixer">Solver: {bug.solver}</h4>
                 <h5 className="state">{bug.state}</h5>
                 <h3 className="severity">{bug.severity}</h3>
-                <div className="assign-button-container">{assignButton}</div>
+                <div className="assign-button-container" id={bug.id}>{assignButton}</div>
               </div>
             );
           })}

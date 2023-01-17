@@ -610,7 +610,7 @@ const GetOneProject = async (req, res) => {
         // get solver username if it exists
         let solver_username = '';
         if (bug_info.fixer_gid) {
-            solver_username = Student.findOne({
+            solver_username = await Student.findOne({
                 attributes: [ 'username' ],
                 where: {
                     gid: bug_info.fixer_gid
@@ -919,7 +919,11 @@ const EditOneBug = async (req, res) => {
             severity: severity
         };
     }
-    await bug_info.update(updated_bug_json);
+    await Bug.update(updated_bug_json, {
+        where: {
+            id: id
+        }
+    });
 
     return res.sendStatus(200);
 };
@@ -945,20 +949,16 @@ const AssignBug = async (req, res) => {
     });
     requester_gid = requester_gid.dataValues.gid;
 
-    // get bug
-    let bug = Bug.findOne({
-        where: {
+    await Bug.update({fixer_gid: requester_gid},
+        { where: {
             id: id
-        }
-    });
-
-    await bug.update({fixer_gid: requester_gid});
+        }});
 
     return res.sendStatus(200);
 };
 
 // /api/:project_id/bug/:id/assign - DELETE
-const UnassignBug = async (res, req) => {
+const UnassignBug = async (req, res) => {
     // get project id - might not need it but just in case
     let project_id = req.params.project_id;
     // get id of bug
@@ -985,9 +985,13 @@ const UnassignBug = async (res, req) => {
         }
     });
 
-    await bug.update({
+    await Bug.update({
         fixer_gid: null,
         solution_link: null,
+    },{
+        where: {
+            id: id
+        }
     });
 
     return res.sendStatus(200);
