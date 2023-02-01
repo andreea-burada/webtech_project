@@ -1,5 +1,3 @@
--- change root temp. password to specific password
-ALTER USER 'root'@'localhost' IDENTIFIED BY '010511';
 -- create DB used for project
 CREATE DATABASE webtech_project;
 -- create user for project
